@@ -1,0 +1,4 @@
+Input: Create
+User1
+Credit: 999998
+Output: User1 has been created

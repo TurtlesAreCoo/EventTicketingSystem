@@ -1,0 +1,4 @@
+Input: Create
+User1
+Credit: 1000000
+Output: Error: Credit limit exceeded.
