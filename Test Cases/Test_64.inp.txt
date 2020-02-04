@@ -1,3 +1,0 @@
-Input: Delete 
-User1
-Output: Error: Admin Privileges Required
