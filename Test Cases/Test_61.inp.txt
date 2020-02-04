@@ -1,3 +1,0 @@
-Input: Create
-UserNameUserNa 
-Output: UserNameUserNa has been created
