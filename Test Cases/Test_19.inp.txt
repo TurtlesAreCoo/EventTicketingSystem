@@ -1,0 +1,8 @@
+login
+standard
+buy
+postMaloneToronto
+3
+postMaloneFan123
+yes
+logout

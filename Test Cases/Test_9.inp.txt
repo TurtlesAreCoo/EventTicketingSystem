@@ -1,0 +1,5 @@
+login
+standard
+buy
+notARealEvent
+logout

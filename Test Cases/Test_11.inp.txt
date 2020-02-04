@@ -1,0 +1,6 @@
+login
+standard
+buy
+postMaloneToronto
+-17
+logout
