@@ -1,3 +1,5 @@
-Input: Create
-User1
-Output: Error: User1 already exists
+Login
+admin
+Create
+user2
+logout

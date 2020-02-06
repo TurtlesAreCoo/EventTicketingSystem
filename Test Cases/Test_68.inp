@@ -1,3 +1,5 @@
-Input: Delete 
-AdminUser1
-Output: Error: Cannot delete current user
+Login
+admin
+Delete
+admin
+logout

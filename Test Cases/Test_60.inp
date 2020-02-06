@@ -1,3 +1,5 @@
-Input: Create
-UserNameExceedsCharacterLimit 
-Output: Error: Username exceeds character limit.
+Login
+admin
+Create
+UserNameExceedsCharacterLimit
+logout
