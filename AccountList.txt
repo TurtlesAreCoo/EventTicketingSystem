@@ -1,0 +1,4 @@
+StandardBuy     BS    110000
+StandardSell    SS    110000
+StandardFull    FS    110000
+Admin           AA    110000
