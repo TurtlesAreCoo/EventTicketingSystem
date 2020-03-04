@@ -61,7 +61,7 @@ public class Controller {
 					}
 				} else if (action.equals("create")) {
 					// Call create method 
-					/*(
+					
 					if(create(userList))
 					{
 						System.out.println("User was created successfully.");
@@ -69,7 +69,7 @@ public class Controller {
 					}else {
 						System.out.println("User was not created successfully.");
 					}
-					*/
+					
 				} else if (action.equals("delete"))  {
 					System.out.println("Delete");
 				} else if (action.equals("logout")) {
@@ -83,6 +83,7 @@ public class Controller {
 			}
 		}
 		//need to write the userList and the eventLIst in a way that it overrides the current ones.
+		writeAccountList();
 		System.out.println("Exiting the system now");
 		in.close();
 	}
@@ -378,6 +379,29 @@ public class Controller {
 		     e.printStackTrace();
 		}
 	}
+	
+	
+	private static void writeAccountList() {
+		String key;
+		User temp;
+		try {
+			FileWriter writer = new FileWriter("AccountList.txt",false);
+			for (Map.Entry mapElement : userList.entrySet()) { 
+	            key = (String)mapElement.getKey(); 
+	            temp = userList.get(key);
+	            writer.write(temp.toString() + "\n"); 
+	        } 
+			writer.close();
+		} catch (IOException e) {
+		      System.out.println("An error occurred." + System.getProperty("user.dir"));
+		      e.printStackTrace();
+		}
+	}
+	
+	private static void writeEventList() {
+		
+	}
+	
 	
 	//transaction code helper methods
 	private static String leftJustify(String word, int size) {
