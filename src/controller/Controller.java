@@ -46,6 +46,7 @@ public class Controller {
 					} else {
 						System.out.println("There was an error when trying to add credit");
 						break;
+					}
 				} else if (action.equals("refund"))  {
 					if (refund(in)) {
 						System.out.println("You have successfully refunded");
@@ -53,6 +54,7 @@ public class Controller {
 					} else {
 						System.out.println("There was an error when trying to refund");
 						break;
+					}
 				} else if (action.equals("create")) {
 					System.out.println("Create");
 				} else if (action.equals("delete"))  {
