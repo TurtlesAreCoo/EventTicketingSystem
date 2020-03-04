@@ -13,6 +13,7 @@ public class Controller {
 		transactionList = new ArrayList<String>();
 		//reads the account lists currently with a hard coded accoutnList.txt file
 		readAccountList();
+		readEventList();
 		Scanner in = new Scanner(System.in);
 		boolean exit = false;
 		String action = "";
@@ -84,6 +85,7 @@ public class Controller {
 		}
 		//need to write the userList and the eventLIst in a way that it overrides the current ones.
 		writeAccountList();
+		writeTransactionList();
 		System.out.println("Exiting the system now");
 		in.close();
 	}
@@ -371,7 +373,7 @@ public class Controller {
 			while (reader.hasNextLine()) {
 				temp = reader.nextLine();
 				ele = temp.split("\\s+");
-				eventList.put(ele[0], new Event(ele[0], ele[1], Integer.valueOf(ele[2]), Double.valueOf(ele[3]))));
+				eventList.put(ele[0], new Event(ele[0], ele[1], Integer.valueOf(ele[2]), Double.valueOf(ele[3])));
 			}
 			reader.close();
 		} catch (FileNotFoundException e) {
@@ -401,7 +403,29 @@ public class Controller {
 	private static void writeEventList() {
 		
 	}
-	
+
+	private static void writeTransactionList() {
+		FileWriter fw = null;
+        BufferedWriter bw = null;
+        PrintWriter pw = null;
+		try {
+            fw = new FileWriter("TransactionList.txt", true);
+            bw = new BufferedWriter(fw);
+            pw = new PrintWriter(bw);
+            Iterator<String> i = transactionList.iterator();
+            pw.println("");
+            while (i.hasNext()) {
+            	pw.println(i.next());
+            }
+            pw.flush();
+            pw.close();
+            bw.close();
+            fw.close();
+        }  catch (IOException e) {
+        	 System.out.println("An error occurred." + System.getProperty("user.dir"));
+		     e.printStackTrace();
+        }
+	}
 	
 	//transaction code helper methods
 	private static String leftJustify(String word, int size) {
@@ -426,7 +450,6 @@ public class Controller {
 		return space+word;
 	}
 	
-	
 	//printing for the account types
 	private static void printMenu() {
 		if (currentUser.getType().equals("AA"))
@@ -438,7 +461,6 @@ public class Controller {
 		else
 			welcomeStandard(currentUser.getUsername());
 	}
-	
 	//Create method 
 	private static boolean create() {
 		
