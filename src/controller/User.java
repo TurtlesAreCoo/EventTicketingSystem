@@ -1,6 +1,6 @@
 package controller;
 
-class User {
+public class User {
 	private String username;
 	private String accountType;
 	private double balance;

@@ -5,20 +5,19 @@ import java.io.*;
 
 public class Controller {
 	private static User currentUser;
-	private static ArrayList<String> userList;
+	private static HashMap<String,User> userList;
 	private static ArrayList<String> transactionList;
-	private static ArrayList<String> eventList;	
+	private static HashMap<String,Event> eventList;
 	
 	public static void main(String[] args) {
 		transactionList = new ArrayList<String>();
-		eventList = new ArrayList<String>();
+		eventList = new HashMap<String,Event>();
 		//reads the account lists currently with a hard coded accoutnList.txt file
 		readAccountList();
 		Scanner in = new Scanner(System.in);
 		boolean exit = false;
 		String action = "";
 		System.out.println("Type login if you want to login, exit if you want to exit.");
-		//action = in.nextLine();
 		while (!(action = in.nextLine()).equals("exit") && exit == false) {
 			action = action.toLowerCase();
 			if (currentUser == null) {
@@ -26,7 +25,8 @@ public class Controller {
 					System.out.println("Now exiting the system");
 					exit = true;
 				} else if (action.equals("login")) {
-					currentUser = login();
+					currentUser = login(in);
+					printMenu();
 				} else {
 					System.out.println("Type login if you want to login, exit if you want to exit.");
 				}
@@ -61,6 +61,7 @@ public class Controller {
 					}
 				} else if (action.equals("create")) {
 					// Call create method 
+					
 					if(create(userList))
 					{
 						System.out.println("User was created successfully.");
@@ -68,7 +69,7 @@ public class Controller {
 					}else {
 						System.out.println("User was not created successfully.");
 					}
-	
+					
 				} else if (action.equals("delete"))  {
 					System.out.println("Delete");
 				} else if (action.equals("logout")) {
@@ -328,45 +329,29 @@ public class Controller {
 		transactionList.add(type + " " + leftJustify(eventName,19) + " " + leftJustify(sellerName,13) + " " + zeroRightJustify(numOfTickets, 3) + " " + zeroRightJustify(ticketPrice,6));
 		System.out.println(transactionList.get(0));
 	}
-	
-	private static User login() {
-		Scanner nameIn = new Scanner(System.in);
+
+	private static User login(Scanner in) {
 		System.out.println("Enter Username: ");
-		String temp = nameIn.nextLine();
-		String name = leftJustify(temp, 15);
-		//checks the user list if the user exists
-		Iterator<String> i = userList.iterator();
-		temp = "";
-		boolean found = false;
-		while (i.hasNext() && found == false) {
-			temp = (String) i.next();
-			if (temp.contains(name)) {
-				found = true;
-			}
-		}
-		if (found) {
-			String[] ele = temp.split("\\s+");
-			if (ele[1].equals("AA"))
-				welcomeAdmin(name);
-			else if (ele[1].equals("SS"))
-				welcomeSell(name);
-			else if (ele[1].equals("BS"))
-				welcomeBuy(name);
-			else
-				welcomeStandard(name);
-			return new User(ele[0],ele[1], Double.valueOf(ele[2]));
+		String name = in.nextLine();
+		if (userList.containsKey(name)) {
+			return userList.get(name);
 		} else {
-			System.out.println("Sorry User Not Found");
 			return null;
 		}
 	}
+	
 	private static void readAccountList() {
-		userList = new ArrayList<String>();
+		userList = new HashMap<String,User>();
 		try {
 			File accountFile = new File("AccountList.txt");
 			Scanner reader = new Scanner(accountFile);
-			while (reader.hasNextLine()) 
-				userList.add(reader.nextLine());
+			String temp = "";
+			String[] ele;
+			while (reader.hasNextLine()) {
+				temp = reader.nextLine();
+				ele = temp.split("\\s+");
+				userList.put(ele[0], new User(ele[0], ele[1], Double.valueOf(ele[2])));
+			}
 			reader.close();
 		} catch (FileNotFoundException e) {
 		      System.out.println("An error occurred." + System.getProperty("user.dir"));
@@ -374,6 +359,9 @@ public class Controller {
 		}
 	}
 	
+	private static void readEventList() {
+		//i think we should make it a hashmap of <String,Event> , where event is a new class that has all the info.
+	}
 	//transaction code helper methods
 	private static String leftJustify(String word, int size) {
 		String space = "";
