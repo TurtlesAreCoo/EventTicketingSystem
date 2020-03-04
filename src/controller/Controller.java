@@ -11,7 +11,6 @@ public class Controller {
 	
 	public static void main(String[] args) {
 		transactionList = new ArrayList<String>();
-		eventList = new HashMap<String,Event>();
 		//reads the account lists currently with a hard coded accoutnList.txt file
 		readAccountList();
 		Scanner in = new Scanner(System.in);
@@ -26,7 +25,8 @@ public class Controller {
 					exit = true;
 				} else if (action.equals("login")) {
 					currentUser = login(in);
-					printMenu();
+					if (currentUser != null)
+						printMenu();
 				} else {
 					System.out.println("Type login if you want to login, exit if you want to exit.");
 				}
@@ -61,7 +61,7 @@ public class Controller {
 					}
 				} else if (action.equals("create")) {
 					// Call create method 
-					
+					/*(
 					if(create(userList))
 					{
 						System.out.println("User was created successfully.");
@@ -69,7 +69,7 @@ public class Controller {
 					}else {
 						System.out.println("User was not created successfully.");
 					}
-					
+					*/
 				} else if (action.equals("delete"))  {
 					System.out.println("Delete");
 				} else if (action.equals("logout")) {
@@ -82,6 +82,7 @@ public class Controller {
 				}
 			}
 		}
+		//need to write the userList and the eventLIst in a way that it overrides the current ones.
 		System.out.println("Exiting the system now");
 		in.close();
 	}
@@ -360,8 +361,24 @@ public class Controller {
 	}
 	
 	private static void readEventList() {
-		//i think we should make it a hashmap of <String,Event> , where event is a new class that has all the info.
+		eventList = new HashMap<String,Event>();
+		try {
+			File eventFile = new File("EventList.txt");
+			Scanner reader = new Scanner (eventFile);
+			String temp = "";
+			String[] ele;
+			while (reader.hasNextLine()) {
+				temp = reader.nextLine();
+				ele = temp.split("\\s+");
+				eventList.put(ele[0], new Event(ele[0], ele[1], Integer.valueOf(ele[2]), Double.valueOf(ele[3]))));
+			}
+			reader.close();
+		} catch (FileNotFoundException e) {
+			 System.out.println("An error occurred." + System.getProperty("user.dir"));
+		     e.printStackTrace();
+		}
 	}
+	
 	//transaction code helper methods
 	private static String leftJustify(String word, int size) {
 		String space = "";
