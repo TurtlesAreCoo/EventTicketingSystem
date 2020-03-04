@@ -62,7 +62,7 @@ public class Controller {
 				} else if (action.equals("create")) {
 					// Call create method 
 					
-					if(create(userList))
+					if(create())
 					{
 						System.out.println("User was created successfully.");
 						 
@@ -399,7 +399,7 @@ public class Controller {
 	}
 	
 	//Create method 
-	private static boolean create(ArrayList userList) {
+	private static boolean create() {
 		
 		System.out.println("Welcome to Create!");
 		Scanner nameIn = new Scanner(System.in);
@@ -412,14 +412,9 @@ public class Controller {
 			return false; 
 		}
 		// Check to see if user name already exists in system. 
-		Iterator<String> i = userList.iterator();
-		String temp = "";
-		while (i.hasNext()) {
-			temp = (String) i.next();
-			if (temp.contains(newUserName)) {
-				System.out.println("Error please enter a new username. " +  newUserName + " already exisits.");
-				return false;
-			}
+		if ((userList.containsKey(newUserName))){
+			System.out.println("Error please enter a new username. " +  newUserName + " already exisits.");
+			return false;
 		}
 		
 		System.out.println("Please enter the user type:");
@@ -433,10 +428,15 @@ public class Controller {
 			System.out.println("Credit limit exceeded.");
 			return false;
 		}
-		//convert credit to string before adding it to array list.
-		Integer.toString(newUserCreditAmount); 
-		String finalUser = newUserName + "\t" + "\t" + newUserType + "    " + newUserCreditAmount;
-		userList.add(finalUser);
+		userList.put(newUserName, new User(newUserName, newUserType, newUserCreditAmount));
+		Set setofkeys = userList.keySet();
+		Iterator iterator = setofkeys.iterator(); 
+		while(iterator.hasNext())
+		{
+			String key = (String) iterator.next();
+			User value = (User)userList.get(key); 
+			System.out.println("Name " + key +", User " + value);
+		}
 		return true;	
 	}
 	
