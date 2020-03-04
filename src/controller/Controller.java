@@ -157,10 +157,15 @@ public class Controller {
 		double transferCredit = in.nextDouble();
 		double newCreditSeller = test - transferCredit;
 		double newCreditBuyer = transferCredit + test2;
-
-
+		//printing new totals
 		System.out.println(newCreditSeller + " is the new total amount for the seller");
 		System.out.println(newCreditBuyer + " is the new total amount for the buyer");
+		//Converting back to string to update text file
+		String newCreditSellerString = Double.toString(newCreditSeller);
+		String newCreditBuyerString = Double.toString(newCreditBuyer);
+		//Attempt to update text file
+		String newTotalSeller = tempSeller.replaceAll(arraySell[2],newCreditSellerString);
+		String newTotalBuyer = temp.replaceAll(arrayBuy[2],newCreditBuyerString);
 		return true;
 	}
 
