@@ -41,9 +41,19 @@ public class Controller {
 				} else if (action.equals("sell"))  {
 					System.out.println("Sell");
 				} else if (action.equals("addCredit"))  {
-					System.out.println("Add credit");
+					if (addCredit(in)) {
+						System.out.println("You have successfully added credit");
+						break;
+					} else {
+						System.out.println("There was an error when trying to add credit");
+						break;
 				} else if (action.equals("refund"))  {
-					System.out.println("Refund");
+					if (refund(in)) {
+						System.out.println("You have successfully refunded");
+						break;
+					} else {
+						System.out.println("There was an error when trying to refund");
+						break;
 				} else if (action.equals("create")) {
 					System.out.println("Create");
 				} else if (action.equals("delete"))  {
@@ -139,13 +149,12 @@ public class Controller {
 		System.out.println(newCreditBuyer + " is the new total amount for the buyer");
 		return true;
 	}
-	
-	
-	//refund
-	private static boolean refund(Scanner in){
-		boolean found = false;
-		System.out.println("You are now refunding!");
-		System.out.println("Please enter buyer's username");
+			
+	//add credit
+	private static boolean addCredit(Scanner in){
+		//seeing if usernames match
+		System.out.println("You are now adding credit!");
+		System.out.println("Enter username of account being credited");
 
 		Scanner nameIn = new Scanner(System.in);
 		String temp = nameIn.nextLine();
@@ -171,51 +180,34 @@ public class Controller {
 			//return null;
 		}
 
+		String[] arrayNew = temp.split("\\s+");
 
-
-		System.out.println("Please enter seller's username");
-		Scanner nameInSeller = new Scanner(System.in);
-		String tempSeller = nameInSeller.nextLine();
-		String nameSeller = leftJustify(tempSeller, 15);
-		//checks the user list if the user exists
-		Iterator<String> iSeller = userList.iterator();
-		tempSeller = "";
-		boolean foundSeller = false;
-		while (iSeller.hasNext() && foundSeller == false) {
-			tempSeller = (String) iSeller.next();
-			if (tempSeller.contains(nameSeller)) {
-				System.out.println("The user exists in the system");
-				foundSeller = true;
-			}
+		System.out.println("Enter amount of credit you would like to add");
+		double creditAdd = in.nextDouble();
+		if(creditAdd > 1000){
+			System.out.println("Cannot process more than 1000");
+			return false;
 		}
-		if (foundSeller) {
-			String[] eleSeller = tempSeller.split("\\s+");
-			if (eleSeller[0].equals(nameSeller))
-				System.out.println("THIS IS THE CORRECT USER");
-			//return new User(ele[0],ele[1], Double.valueOf(ele[2]));
-		} else {
-			System.out.println("Sorry User Not Found");
-			//return null;
+		else{
+			//Add code to add the credit
 		}
 
-		/* Creating new arrays to hold the split value (credit) and convert from string to double
-		in order to do math with it
-		 */
-		String[] arraySell = tempSeller.split("\\s+");
-		double test = Double.parseDouble(arraySell[2]);
-		String[] arrayBuy = temp.split("\\s+");
-		double test2 = Double.parseDouble(arrayBuy[2]);
-		//Transferring the credits
-		System.out.println("Please enter amount of credit to transfer");
-		double transferCredit = in.nextDouble();
-		double newCreditSeller = test - transferCredit;
-		double newCreditBuyer = transferCredit + test2;
-		//printing new totals
-		System.out.println(newCreditSeller + " is the new total amount for the seller");
-		System.out.println(newCreditBuyer + " is the new total amount for the buyer");
+/*what it should look like i think
+	if(arrayNew[1] == "AA")
+	ask for username
+	make sure username matches
+	ask for amount of credit to add
+	add the credit
+	else
+	ask for amount of credit to add
+	add the credit
+ */
+		//****in standard mode****
+		if(arrayNew[1] == "AA")
+		System.out.println(creditAdd + " has been added to account " + arrayNew[0]);
+		System.out.println(arrayNew[1]);
 		return true;
 	}
-	
 	
 	
 	
