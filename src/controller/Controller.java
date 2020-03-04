@@ -56,7 +56,15 @@ public class Controller {
 						break;
 					}
 				} else if (action.equals("create")) {
-					System.out.println("Create");
+					// Call create method 
+					if(create(userList))
+					{
+						System.out.println("User was created successfully.");
+						 
+					}else {
+						System.out.println("User was not created successfully.");
+					}
+	
 				} else if (action.equals("delete"))  {
 					System.out.println("Delete");
 				} else if (action.equals("logout")) {
@@ -357,6 +365,49 @@ public class Controller {
 		else
 			welcomeStandard(currentUser.getUsername());
 	}
+	
+	//Create method 
+	private static boolean create(ArrayList userList) {
+		
+		System.out.println("Welcome to Create!");
+		Scanner nameIn = new Scanner(System.in);
+		System.out.println("Please enter the name of the user you would like to create.");
+		String newUserName = nameIn.nextLine();
+		//Check length of user name 
+		if(newUserName.length() > 15)
+		{
+			System.out.println("Error, user name must be below 15 charcters.");
+			return false; 
+		}
+		// Check to see if user name already exists in system. 
+		Iterator<String> i = userList.iterator();
+		String temp = "";
+		while (i.hasNext()) {
+			temp = (String) i.next();
+			if (temp.contains(newUserName)) {
+				System.out.println("Error please enter a new username. " +  newUserName + " already exisits.");
+				return false;
+			}
+		}
+		
+		System.out.println("Please enter the user type:");
+		String newUserType = nameIn.nextLine();
+		
+		System.out.println("Please enter credit to be added:");
+		int newUserCreditAmount = nameIn.nextInt();
+		//checks credit limit
+		if(newUserCreditAmount > 999999)
+		{
+			System.out.println("Credit limit exceeded.");
+			return false;
+		}
+		//convert credit to string before adding it to array list.
+		Integer.toString(newUserCreditAmount); 
+		String finalUser = newUserName + "\t" + "\t" + newUserType + "    " + newUserCreditAmount;
+		userList.add(finalUser);
+		return true;	
+	}
+	
 	private static void welcomeAdmin(String name) {
 		System.out.println("============================");
 		System.out.println("Hello " + name + "!");
@@ -398,5 +449,6 @@ public class Controller {
 		System.out.println("Enter logout to Logout!");
 		System.out.println("Enter exit to exit the system!");
 	}
+	
 	
 }
