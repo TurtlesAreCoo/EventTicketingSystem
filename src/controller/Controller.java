@@ -62,6 +62,164 @@ public class Controller {
 		in.close();
 	}
 	
+	
+	
+	//refund
+	private static boolean refund(Scanner in){
+		boolean found = false;
+		System.out.println("You are now refunding!");
+		System.out.println("Please enter buyer's username");
+
+		Scanner nameIn = new Scanner(System.in);
+		String temp = nameIn.nextLine();
+		String name = leftJustify(temp, 15);
+		//checks the user list if the user exists
+		Iterator<String> i = userList.iterator();
+		temp = "";
+		boolean found2 = false;
+		while (i.hasNext() && found2 == false) {
+			temp = (String) i.next();
+			if (temp.contains(name)) {
+				System.out.println("The user exists in the system");
+				found2 = true;
+			}
+		}
+		if (found2) {
+			String[] ele = temp.split("\\s+");
+			if (ele[0].equals(name))
+				System.out.println("THIS IS THE CORRECT USER");
+			//return new User(ele[0],ele[1], Double.valueOf(ele[2]));
+		} else {
+			System.out.println("Sorry User Not Found");
+			//return null;
+		}
+
+
+
+		System.out.println("Please enter seller's username");
+		Scanner nameInSeller = new Scanner(System.in);
+		String tempSeller = nameInSeller.nextLine();
+		String nameSeller = leftJustify(tempSeller, 15);
+		//checks the user list if the user exists
+		Iterator<String> iSeller = userList.iterator();
+		tempSeller = "";
+		boolean foundSeller = false;
+		while (iSeller.hasNext() && foundSeller == false) {
+			tempSeller = (String) iSeller.next();
+			if (tempSeller.contains(nameSeller)) {
+				System.out.println("The user exists in the system");
+				foundSeller = true;
+			}
+		}
+		if (foundSeller) {
+			String[] eleSeller = tempSeller.split("\\s+");
+			if (eleSeller[0].equals(nameSeller))
+				System.out.println("THIS IS THE CORRECT USER");
+			//return new User(ele[0],ele[1], Double.valueOf(ele[2]));
+		} else {
+			System.out.println("Sorry User Not Found");
+			//return null;
+		}
+
+		/* Creating new arrays to hold the split value (credit) and convert from string to double
+		in order to do math with it
+		 */
+		String[] arraySell = tempSeller.split("\\s+");
+		double test = Double.parseDouble(arraySell[2]);
+		String[] arrayBuy = temp.split("\\s+");
+		double test2 = Double.parseDouble(arrayBuy[2]);
+		//Transferring the credits
+		System.out.println("Please enter amount of credit to transfer");
+		double transferCredit = in.nextDouble();
+		double newCreditSeller = test - transferCredit;
+		double newCreditBuyer = transferCredit + test2;
+		//printing 
+		System.out.println(newCreditSeller + " is the new total amount for the seller");
+		System.out.println(newCreditBuyer + " is the new total amount for the buyer");
+		return true;
+	}
+	
+	
+	//refund
+	private static boolean refund(Scanner in){
+		boolean found = false;
+		System.out.println("You are now refunding!");
+		System.out.println("Please enter buyer's username");
+
+		Scanner nameIn = new Scanner(System.in);
+		String temp = nameIn.nextLine();
+		String name = leftJustify(temp, 15);
+		//checks the user list if the user exists
+		Iterator<String> i = userList.iterator();
+		temp = "";
+		boolean found2 = false;
+		while (i.hasNext() && found2 == false) {
+			temp = (String) i.next();
+			if (temp.contains(name)) {
+				System.out.println("The user exists in the system");
+				found2 = true;
+			}
+		}
+		if (found2) {
+			String[] ele = temp.split("\\s+");
+			if (ele[0].equals(name))
+				System.out.println("THIS IS THE CORRECT USER");
+			//return new User(ele[0],ele[1], Double.valueOf(ele[2]));
+		} else {
+			System.out.println("Sorry User Not Found");
+			//return null;
+		}
+
+
+
+		System.out.println("Please enter seller's username");
+		Scanner nameInSeller = new Scanner(System.in);
+		String tempSeller = nameInSeller.nextLine();
+		String nameSeller = leftJustify(tempSeller, 15);
+		//checks the user list if the user exists
+		Iterator<String> iSeller = userList.iterator();
+		tempSeller = "";
+		boolean foundSeller = false;
+		while (iSeller.hasNext() && foundSeller == false) {
+			tempSeller = (String) iSeller.next();
+			if (tempSeller.contains(nameSeller)) {
+				System.out.println("The user exists in the system");
+				foundSeller = true;
+			}
+		}
+		if (foundSeller) {
+			String[] eleSeller = tempSeller.split("\\s+");
+			if (eleSeller[0].equals(nameSeller))
+				System.out.println("THIS IS THE CORRECT USER");
+			//return new User(ele[0],ele[1], Double.valueOf(ele[2]));
+		} else {
+			System.out.println("Sorry User Not Found");
+			//return null;
+		}
+
+		/* Creating new arrays to hold the split value (credit) and convert from string to double
+		in order to do math with it
+		 */
+		String[] arraySell = tempSeller.split("\\s+");
+		double test = Double.parseDouble(arraySell[2]);
+		String[] arrayBuy = temp.split("\\s+");
+		double test2 = Double.parseDouble(arrayBuy[2]);
+		//Transferring the credits
+		System.out.println("Please enter amount of credit to transfer");
+		double transferCredit = in.nextDouble();
+		double newCreditSeller = test - transferCredit;
+		double newCreditBuyer = transferCredit + test2;
+		//printing new totals
+		System.out.println(newCreditSeller + " is the new total amount for the seller");
+		System.out.println(newCreditBuyer + " is the new total amount for the buyer");
+		return true;
+	}
+	
+	
+	
+	
+	
+	
 	//basic buy
 	//need to make it check if event exists
 	private static boolean buy(Scanner in){
