@@ -7,8 +7,9 @@ public class Controller {
 	private static User currentUser;
 	private static ArrayList<String> userList;
 	private static ArrayList<String> transactionList;
-	private static ArrayList<String> eventList;	
-	
+	private static ArrayList<String> eventList;
+
+
 	public static void main(String[] args) {
 		transactionList = new ArrayList<String>();
 		eventList = new ArrayList<String>();
@@ -39,11 +40,33 @@ public class Controller {
 					}
 					printMenu();
 				} else if (action.equals("sell"))  {
-					System.out.println("Sell");
+					System.out.println(userList);
+
+
+
+
+
 				} else if (action.equals("addCredit"))  {
 					System.out.println("Add credit");
-				} else if (action.equals("refund"))  {
-					System.out.println("Refund");
+
+
+
+
+
+				} else if (action.equals("refund")) {
+					if (refund(in)) {
+						System.out.println("You have successfully refunded");
+						break;
+					} else {
+						System.out.println("There was an error when trying to refund");
+						break;
+					}
+					//System.out.println("Refund");
+
+
+
+
+
 				} else if (action.equals("create")) {
 					System.out.println("Create");
 				} else if (action.equals("delete"))  {
@@ -62,6 +85,105 @@ public class Controller {
 		System.out.println("Exiting the system now");
 		in.close();
 	}
+	//refund
+	private static boolean refund(Scanner in){
+		boolean found = false;
+		System.out.println("You are now refunding!");
+		System.out.println("Please enter buyer's username");
+
+		Scanner nameIn = new Scanner(System.in);
+		String temp = nameIn.nextLine();
+		String name = leftJustify(temp, 15);
+		//checks the user list if the user exists
+		Iterator<String> i = userList.iterator();
+		temp = "";
+		boolean found2 = false;
+		while (i.hasNext() && found2 == false) {
+			temp = (String) i.next();
+			if (temp.contains(name)) {
+				System.out.println("The user exists in the system");
+				found2 = true;
+			}
+		}
+		if (found2) {
+			String[] ele = temp.split("\\s+");
+			if (ele[0].equals(name))
+				System.out.println("THIS IS THE CORRECT USER");
+			//return new User(ele[0],ele[1], Double.valueOf(ele[2]));
+		} else {
+			System.out.println("Sorry User Not Found");
+			//return null;
+		}
+
+
+
+		System.out.println("Please enter seller's username");
+		Scanner nameInSeller = new Scanner(System.in);
+		String tempSeller = nameInSeller.nextLine();
+		String nameSeller = leftJustify(tempSeller, 15);
+		//checks the user list if the user exists
+		Iterator<String> iSeller = userList.iterator();
+		tempSeller = "";
+		boolean foundSeller = false;
+		while (iSeller.hasNext() && foundSeller == false) {
+			tempSeller = (String) iSeller.next();
+			if (tempSeller.contains(nameSeller)) {
+				System.out.println("The user exists in the system");
+				foundSeller = true;
+			}
+		}
+		if (foundSeller) {
+			String[] eleSeller = tempSeller.split("\\s+");
+			if (eleSeller[0].equals(nameSeller))
+				System.out.println("THIS IS THE CORRECT USER");
+			//return new User(ele[0],ele[1], Double.valueOf(ele[2]));
+		} else {
+			System.out.println("Sorry User Not Found");
+			//return null;
+		}
+
+
+
+
+		/* Creating new arrays to hold the split value (credit) and convert from string to double
+		in order to do math with it
+		 */
+		String[] arraySell = tempSeller.split("\\s+");
+		double test = Double.parseDouble(arraySell[2]);
+		String[] arrayBuy = temp.split("\\s+");
+		double test2 = Double.parseDouble(arrayBuy[2]);
+		//Transferring the credits 
+		System.out.println("Please enter amount of credit to transfer");
+		double transferCredit = in.nextDouble();
+		double newCreditSeller = test - transferCredit;
+		double newCreditBuyer = transferCredit + test2;
+
+
+		System.out.println(newCreditSeller + " is the new total amount for the seller");
+		System.out.println(newCreditBuyer + " is the new total amount for the buyer");
+		return true;
+	}
+
+
+	//add credit
+	private static boolean addCredit(Scanner in){
+		//****in admin mode****
+		System.out.println("You are now adding credit in admin mode!");
+		System.out.println("Enter amount of credit you would like to add");
+		double addCreditAdmin = in.nextDouble();
+		System.out.println("Enter username of account where credit is being added");
+		String addCreditUsernameAdmin = in.nextLine();
+
+
+		//****in standard mode****
+		System.out.println("Enter amount of credit you would like to add");
+		double addCreditStandard = in.nextDouble();
+
+
+
+		return true;
+	}
+
 	
 	//basic buy
 	//need to make it check if event exists
