@@ -38,7 +38,11 @@ public class Controller {
 						System.out.println("There was an error when trying to buy");
 					}
 				} else if (action.equals("sell"))  {
-					System.out.println("Sell");
+					if (sell(in)) {
+						System.out.println("Sell transaction completed.");
+					} else {
+						System.out.println("There was an error when trying to sell.");
+					}
 				} else if (action.equals("addCredit"))  {
 					if (addCredit(in)) {
 						System.out.println("You have successfully added credit");
@@ -218,9 +222,6 @@ public class Controller {
 	}
 	
 	
-	
-	
-	
 	//basic buy
 	//need to make it check if event exists
 	private static boolean buy(Scanner in){
@@ -229,33 +230,26 @@ public class Controller {
 		int numOfTickets = 0;
 		boolean cancel = false;
 		boolean stopNum = false;
-
+		//Getting the event Name
 		System.out.println("Please enter the Event name");
 		while (cancel == false && (eventName = in.nextLine()).length() > 19) {
-			if (eventName.toLowerCase().equals("cancel")) {
-				cancel = true;
-				System.out.println("Buy Transaction cancelled.");
-			} else {
-				System.out.println("You have entered an invalid event name please try again, or type cancel to cancel the transaction.");
-			}
+			System.out.println("You have entered an invalid event name please try again, or type cancel to cancel the transaction.");
 		}	
 		if (eventName.toLowerCase().equals("cancel")){
 			cancel = true;
 			System.out.println("Buy Transaction cancelled.");
+		} else {
+		//Getting the sellers name
+			System.out.println("Please enter the Sellers name");
 		}
-		System.out.println("Please enter the Sellers name");
 		while (cancel == false && (sellerName = in.nextLine()).length() > 13) {
-			if (sellerName.toLowerCase().equals("cancel")){
-				cancel = true;
-				System.out.println("Buy Transaction cancelled.");
-			} else {
-				System.out.println("You have entered an invalid seller name please try again, or type cancel to cancel the transaction");
-			}
+			System.out.println("You have entered an invalid seller name please try again, or type cancel to cancel the transaction");
 		}
 		if (sellerName.toLowerCase().equals("cancel")){
 			cancel = true;
 			System.out.println("Buy Transaction cancelled.");
 		}
+		//getting the number of tickets
 		if (!cancel) { 
 			System.out.println("Enter the number of tickets you want to purchase (max 4)");
 			if (currentUser.getType().equals("AA")) {
@@ -280,56 +274,59 @@ public class Controller {
 		return true;
 	}
 	
-	
 	//basic sell
 	private static boolean sell(Scanner in) {
 		String eventName = "";
 		String salePrice = "";
 		String numOfTickets = "";
-		double salePriceDouble = 0;
 		boolean cancel = false;
-		boolean numeric = true;
 		
+		//Getting the event name
 		System.out.println("Please enter the event name.");
-		while (cancel == false && (eventName = in.nextLine()).length() > 19) {
-			if (eventName.toLowerCase().equals("cancel")) {
-				cancel = true;
-				System.out.println("Sell transaction cancelled.");
-			} else {
-				System.out.println("You have entered an invalid event name please try again, or type cancel to cancel the transaction.");
-			}
-		}	
+		eventName = in.nextLine();
+		while (cancel == false && eventName.length() > 19) {
+			System.out.println("You have entered an invalid event name please try again, or type cancel to cancel the transaction.");
+		}
 		if (eventName.toLowerCase().equals("cancel")){
 			cancel = true;
-			System.out.println("Sell transaction cancelled.");
-		} else { 
-			System.out.println("You have entered an invalid sale price please try again, or type cancel to cancel the transaction.");
+		} else {
+			System.out.println("Please enter the price per ticket.");
 		}
-		
-		System.out.println("Please enter the price per ticket.");
-		while (cancel == false && (salePrice = in.nextLine()).length() > 6) {
-			if (salePrice.toLowerCase().equals("cancel")) {
+		while (cancel == false && !in.hasNextDouble()) {
+			if (salePrice.toLowerCase().equals("cancel")){
 				cancel = true;
-				System.out.println("Sell Transaction canclled");
 			} else {
-				//check if it is double
+				System.out.println("you have entered an invalid sale price please try again, or type cancel to cancel the transaction.");
+				salePrice = in.nextLine();
 			}
 		}
-		if (salePrice.toLowerCase().equals("cancel")){
-			cancel = true;
-			System.out.println("Sell transaction cancelled.");
-		} else { 
-			System.out.println("You have entered an invalid sale price please try again, or type cancel to cancel the transaction.");
+		if (!cancel) {
+			salePrice = in.nextLine();
+			System.out.println("Please enter the amount of tickets you are selling.");
 		}
-		
-		System.out.println("Please enter the amount of tickets you are selling.");
-		
-		buyAndSellTransaction("03", eventName, currentUser.getUsername(), String.valueOf(numOfTickets), String.valueOf(salePrice).replace(".", ""));
+		while (cancel == false && !in.hasNextInt()) {
+			System.out.println("you have entered an invalid number of tickets please try again, or type cancel to cancel the transaction.");
+			numOfTickets = in.nextLine();
+		}
+		if (salePrice.toLowerCase().equals("cancel") || cancel) {
+			cancel = true;
+		} else {
+			numOfTickets = in.nextLine();
+		}
+	
+		if (cancel) {
+			System.out.println("Sell transaction cancelled.");
+			return false;
+		} else {
+			buyAndSellTransaction("03", eventName, currentUser.getUsername(), numOfTickets, salePrice.replace(".", ""));
+		}
+		return true;
 	}
 	
 	//XX_EEEEEEEEEEEEEEEEEEE_SSSSSSSSSSSSS_TTT_PPPPPP
 	private static void buyAndSellTransaction(String type, String eventName, String sellerName, String numOfTickets, String ticketPrice) {
 		transactionList.add(type + " " + leftJustify(eventName,19) + " " + leftJustify(sellerName,13) + " " + zeroRightJustify(numOfTickets, 3) + " " + zeroRightJustify(ticketPrice,6));
+		System.out.println(transactionList.get(0));
 	}
 	
 	private static User login() {
