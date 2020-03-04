@@ -237,7 +237,6 @@ public class Controller {
 		}
 		System.out.println("Please enter the Sellers name");
 		while (cancel == false && (sellerName = in.nextLine()).length() > 13) {
-			System.out.println(sellerName);
 			if (sellerName.toLowerCase().equals("cancel")){
 				cancel = true;
 				System.out.println("Buy Transaction cancelled.");
@@ -272,6 +271,54 @@ public class Controller {
 		}
 		return true;
 	}
+	
+	
+	//basic sell
+	private static boolean sell(Scanner in) {
+		String eventName = "";
+		String salePrice = "";
+		String numOfTickets = "";
+		double salePriceDouble = 0;
+		boolean cancel = false;
+		boolean numeric = true;
+		
+		System.out.println("Please enter the event name.");
+		while (cancel == false && (eventName = in.nextLine()).length() > 19) {
+			if (eventName.toLowerCase().equals("cancel")) {
+				cancel = true;
+				System.out.println("Sell transaction cancelled.");
+			} else {
+				System.out.println("You have entered an invalid event name please try again, or type cancel to cancel the transaction.");
+			}
+		}	
+		if (eventName.toLowerCase().equals("cancel")){
+			cancel = true;
+			System.out.println("Sell transaction cancelled.");
+		} else { 
+			System.out.println("You have entered an invalid sale price please try again, or type cancel to cancel the transaction.");
+		}
+		
+		System.out.println("Please enter the price per ticket.");
+		while (cancel == false && (salePrice = in.nextLine()).length() > 6) {
+			if (salePrice.toLowerCase().equals("cancel")) {
+				cancel = true;
+				System.out.println("Sell Transaction canclled");
+			} else {
+				//check if it is double
+			}
+		}
+		if (salePrice.toLowerCase().equals("cancel")){
+			cancel = true;
+			System.out.println("Sell transaction cancelled.");
+		} else { 
+			System.out.println("You have entered an invalid sale price please try again, or type cancel to cancel the transaction.");
+		}
+		
+		System.out.println("Please enter the amount of tickets you are selling.");
+		
+		buyAndSellTransaction("03", eventName, currentUser.getUsername(), String.valueOf(numOfTickets), String.valueOf(salePrice).replace(".", ""));
+	}
+	
 	//XX_EEEEEEEEEEEEEEEEEEE_SSSSSSSSSSSSS_TTT_PPPPPP
 	private static void buyAndSellTransaction(String type, String eventName, String sellerName, String numOfTickets, String ticketPrice) {
 		transactionList.add(type + " " + leftJustify(eventName,19) + " " + leftJustify(sellerName,13) + " " + zeroRightJustify(numOfTickets, 3) + " " + zeroRightJustify(ticketPrice,6));
