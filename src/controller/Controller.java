@@ -85,6 +85,7 @@ public class Controller {
 		}
 		//need to write the userList and the eventLIst in a way that it overrides the current ones.
 		writeAccountList();
+		writeEventList();
 		writeTransactionList();
 		System.out.println("Exiting the system now");
 		in.close();
@@ -324,6 +325,7 @@ public class Controller {
 			return false;
 		} else {
 			buyAndSellTransaction("03", eventName, currentUser.getUsername(), numOfTickets, salePrice.replace(".", ""));
+			eventList.put(eventName, new Event(eventName, currentUser.getUsername(),Integer.valueOf(numOfTickets), Double.valueOf(salePrice)));
 		}
 		return true;
 	}
@@ -401,7 +403,22 @@ public class Controller {
 	}
 	
 	private static void writeEventList() {
-		
+		String key;
+		Event temp;
+		System.out.println(eventList.size());
+		try {
+			FileWriter writer = new FileWriter("EventList.txt",false);
+			for (Map.Entry mapElement : eventList.entrySet()) { 
+	            key = (String)mapElement.getKey(); 
+	            temp = eventList.get(key);
+	            System.out.println(key);
+	            writer.write(temp.toString() + "\n"); 
+	        } 
+			writer.close();
+		} catch (IOException e) {
+		      System.out.println("An error occurred." + System.getProperty("user.dir"));
+		      e.printStackTrace();
+		}
 	}
 
 	private static void writeTransactionList() {
@@ -544,6 +561,4 @@ public class Controller {
 		System.out.println("Enter logout to Logout!");
 		System.out.println("Enter exit to exit the system!");
 	}
-	
-	
 }

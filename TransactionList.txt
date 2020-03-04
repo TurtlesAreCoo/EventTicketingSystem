@@ -1,2 +1,14 @@
 something
 04 event1              event2        001 011100
+
+03 someone1            Admin         100 000010
+
+03 someeven1           Admin         100 000010
+
+03 event1              Admin         010 000010
+
+03 someevetn1          Admin         010 000010
+
+03 sell1               Admin         001 000001
+
+03 sell2               Admin         010 000010

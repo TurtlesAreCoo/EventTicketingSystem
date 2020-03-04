@@ -1,3 +1,2 @@
-eventNumberOne      SellerOne     010   5000
-eventNumberTwo      SellerOne     010  10000
-eventNumberThree    SellerTwo     001  00100
+sell2               Admin          010 000100
+sell1               Admin          001 000100
