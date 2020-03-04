@@ -1,4 +1,0 @@
-StandardSell    SS 000011E21
-Admin           AA 000011E21
-StandardFull    FS 000011E21
-StandardBuy     BS 000011E21

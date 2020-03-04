@@ -62,7 +62,6 @@ public class Controller {
 					}
 				} else if (action.equals("create")) {
 					// Call create method 
-					
 					if(create())
 					{
 						System.out.println("User was created successfully.");
@@ -72,7 +71,14 @@ public class Controller {
 					}
 					
 				} else if (action.equals("delete"))  {
-					System.out.println("Delete");
+					if(delete())
+					{
+						System.out.println("User was deleted successfully.");
+						 
+					}else {
+						System.out.println("No user was deleted.");
+					}
+					
 				} else if (action.equals("logout")) {
 					System.out.println("You have logged out");
 					currentUser = null;
@@ -509,15 +515,27 @@ public class Controller {
 			return false;
 		}
 		userList.put(newUserName, new User(newUserName, newUserType, newUserCreditAmount));
-		Set setofkeys = userList.keySet();
-		Iterator iterator = setofkeys.iterator(); 
-		while(iterator.hasNext())
-		{
-			String key = (String) iterator.next();
-			User value = (User)userList.get(key); 
-			System.out.println("Name " + key +", User " + value);
-		}
 		return true;	
+	}
+	
+	private static boolean delete() {
+		System.out.println("Welcome to Delete!");
+		Scanner nameIn = new Scanner(System.in);
+		System.out.println("Please enter the name of the user you would like to delete:");
+		String newUserName = nameIn.nextLine();
+		
+		if ((userList.containsKey(newUserName))){
+			if(newUserName.equals(currentUser.getUsername()))
+			{
+				System.out.println("Cannot delete current user.");
+				return false;
+			}
+			userList.remove(newUserName);
+			System.out.println(newUserName + " has been deleted.");
+			return true;
+		}	
+		System.out.println(newUserName + " does not exist.");
+		return false;
 	}
 	
 	private static void welcomeAdmin(String name) {
