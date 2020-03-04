@@ -354,6 +354,11 @@ public class Controller {
 		transactionList.add(type + " " + leftJustify(eventName,19) + " " + leftJustify(sellerName,13) + " " + zeroRightJustify(numOfTickets, 3) + " " + zeroRightJustify(ticketPrice,6));
 		System.out.println(transactionList.get(0));
 	}
+	
+	private static void createAndDeleteTransaction(String num, String userName, String userType, String credit) {
+		transactionList.add(num + " " + leftJustify(userName, 15) + " " + userType + " " + zeroRightJustify(credit, 9)); 
+		System.out.println(transactionList.get(0));
+	}
 
 	private static User login(Scanner in) {
 		System.out.println("Enter Username: ");
@@ -528,6 +533,7 @@ public class Controller {
 			return false;
 		}
 		userList.put(newUserName, new User(newUserName, newUserType, newUserCreditAmount));
+		createAndDeleteTransaction("01",currentUser.getUsername(), currentUser.getType(), String.valueOf(currentUser.getBalance()));
 		return true;	
 	}
 	
@@ -545,6 +551,7 @@ public class Controller {
 			}
 			userList.remove(newUserName);
 			System.out.println(newUserName + " has been deleted.");
+			createAndDeleteTransaction("02",currentUser.getUsername(), currentUser.getType(), String.valueOf(currentUser.getBalance()));
 			return true;
 		}	
 		System.out.println(newUserName + " does not exist.");
