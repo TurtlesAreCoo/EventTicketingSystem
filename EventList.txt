@@ -1,2 +1,2 @@
-sell2               Admin          010 000100
-sell1               Admin          001 000100
+sell2               Admin          010 10000000
+sell1               Admin          001 10000000

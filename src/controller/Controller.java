@@ -61,6 +61,9 @@ public class Controller {
 						break;
 					}
 				} else if (action.equals("create")) {
+					// check Privileges of account
+					if(currentUser.getType().equals("AA")){
+					
 					// Call create method 
 					if(create())
 					{
@@ -69,8 +72,14 @@ public class Controller {
 					}else {
 						System.out.println("User was not created successfully.");
 					}
+					}else {
+						System.out.println("Error: Admin Privileges Required.");
+					}
 					
 				} else if (action.equals("delete"))  {
+					// check Privileges of account
+					if(currentUser.getType().equals("AA")){
+					//call delete method	
 					if(delete())
 					{
 						System.out.println("User was deleted successfully.");
@@ -78,6 +87,10 @@ public class Controller {
 					}else {
 						System.out.println("No user was deleted.");
 					}
+					}else {
+						System.out.println("Error: Admin Privileges Required.");
+					}
+					
 					
 				} else if (action.equals("logout")) {
 					System.out.println("You have logged out");
