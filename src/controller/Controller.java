@@ -114,135 +114,101 @@ public class Controller {
 	
 	//refund
 	private static boolean refund(Scanner in){
-		boolean found = false;
 		System.out.println("You are now refunding!");
 		System.out.println("Please enter buyer's username");
-
 		Scanner nameIn = new Scanner(System.in);
 		String temp = nameIn.nextLine();
 		String name = leftJustify(temp, 15);
 		//checks the user list if the user exists
-		Iterator<String> i = userList.iterator();
-		temp = "";
-		boolean found2 = false;
-		while (i.hasNext() && found2 == false) {
-			temp = (String) i.next();
-			if (temp.contains(name)) {
-				System.out.println("The user exists in the system");
-				found2 = true;
-			}
-		}
-		if (found2) {
-			String[] ele = temp.split("\\s+");
-			if (ele[0].equals(name))
-				System.out.println("THIS IS THE CORRECT USER");
-			//return new User(ele[0],ele[1], Double.valueOf(ele[2]));
+		if (userList.containsKey(temp)) {
+			System.out.println("valid");
 		} else {
-			System.out.println("Sorry User Not Found");
-			//return null;
+			System.out.println("invalid");
+			return false;
 		}
-
-
-
 		System.out.println("Please enter seller's username");
 		Scanner nameInSeller = new Scanner(System.in);
 		String tempSeller = nameInSeller.nextLine();
 		String nameSeller = leftJustify(tempSeller, 15);
 		//checks the user list if the user exists
-		Iterator<String> iSeller = userList.iterator();
-		tempSeller = "";
-		boolean foundSeller = false;
-		while (iSeller.hasNext() && foundSeller == false) {
-			tempSeller = (String) iSeller.next();
-			if (tempSeller.contains(nameSeller)) {
-				System.out.println("The user exists in the system");
-				foundSeller = true;
-			}
-		}
-		if (foundSeller) {
-			String[] eleSeller = tempSeller.split("\\s+");
-			if (eleSeller[0].equals(nameSeller))
-				System.out.println("THIS IS THE CORRECT USER");
-			//return new User(ele[0],ele[1], Double.valueOf(ele[2]));
+		if (userList.containsKey(tempSeller)) {
+			System.out.println("valid");
 		} else {
-			System.out.println("Sorry User Not Found");
-			//return null;
+			System.out.println("invalid");
+			return false;
 		}
+		User validatedBuyer = userList.get(temp);
+		User validatedSeller = userList.get(tempSeller);
 
-		/* Creating new arrays to hold the split value (credit) and convert from string to double
-		in order to do math with it
-		 */
-		String[] arraySell = tempSeller.split("\\s+");
-		double test = Double.parseDouble(arraySell[2]);
-		String[] arrayBuy = temp.split("\\s+");
-		double test2 = Double.parseDouble(arrayBuy[2]);
-		//Transferring the credits
-		System.out.println("Please enter amount of credit to transfer");
-		double transferCredit = in.nextDouble();
-		double newCreditSeller = test - transferCredit;
-		double newCreditBuyer = transferCredit + test2;
-		//printing 
-		System.out.println(newCreditSeller + " is the new total amount for the seller");
-		System.out.println(newCreditBuyer + " is the new total amount for the buyer");
+		System.out.println("Enter amount of credit to transfer");
+		Double amountCreditToTransfer = in.nextDouble();
+
+		//Adding to buyer balance
+		Double buyerBalance = validatedBuyer.getBalance();
+		Double newBuyerBalance = amountCreditToTransfer + buyerBalance;
+		System.out.println(temp + "'s new balance is " + newBuyerBalance);
+		String newBuyerBalanceString = Double.toString(newBuyerBalance);
+		userList.replace(newBuyerBalanceString,validatedBuyer);
+
+		//Subtracting seller balance
+		Double sellerBalance = validatedSeller.getBalance();
+		Double newSellerBalance = sellerBalance - amountCreditToTransfer;
+		System.out.println(tempSeller + "'s new balance is " + newSellerBalance);
+		String newSellerBalanceString = Double.toString(newSellerBalance);
+		userList.replace(newSellerBalanceString,validatedSeller);
+		
 		return true;
 	}
 			
 	//add credit
 	private static boolean addCredit(Scanner in){
 		//seeing if usernames match
-		System.out.println("You are now adding credit!");
-		System.out.println("Enter username of account being credited");
+		if(currentUser.getType().equals("AA")) {
+			System.out.println("You are an admin!");
+			System.out.println("You are now adding credit!");
+			System.out.println("Enter username of account being credited");
+			Scanner nameIn = new Scanner(System.in);
+			String temp = nameIn.nextLine();
+			String name = leftJustify(temp, 15);
+			//checks the user list if the user exists
+			if (userList.containsKey(temp)) {
+				System.out.println("valid");
+				System.out.println("Enter amount to add into account");
 
-		Scanner nameIn = new Scanner(System.in);
-		String temp = nameIn.nextLine();
-		String name = leftJustify(temp, 15);
-		//checks the user list if the user exists
-		Iterator<String> i = userList.iterator();
-		temp = "";
-		boolean found2 = false;
-		while (i.hasNext() && found2 == false) {
-			temp = (String) i.next();
-			if (temp.contains(name)) {
-				System.out.println("The user exists in the system");
-				found2 = true;
+				User validated = userList.get(temp);
+			//	Double inputtedUserBalance = validated.getBalance();
+
+				//Adding inputted amount to the balance of the current user
+				Double amountToAddIntoAccount = in.nextDouble();
+				if(amountToAddIntoAccount > 1000){
+					System.out.println("Cannot add over 1000 in a given session");
+					return false;
+				}
+				Double newUserBalance = validated.getBalance();
+				newUserBalance = amountToAddIntoAccount + newUserBalance;
+				System.out.println(temp + "'s new balance is " + newUserBalance);
+
+			} else {
+				System.out.println("User doesn't exist");
+				return false;
 			}
 		}
-		if (found2) {
-			String[] ele = temp.split("\\s+");
-			if (ele[0].equals(name))
-				System.out.println("THIS IS THE CORRECT USER");
-			//return new User(ele[0],ele[1], Double.valueOf(ele[2]));
-		} else {
-			System.out.println("Sorry User Not Found");
-			//return null;
-		}
-
-		String[] arrayNew = temp.split("\\s+");
-
-		System.out.println("Enter amount of credit you would like to add");
-		double creditAdd = in.nextDouble();
-		if(creditAdd > 1000){
-			System.out.println("Cannot process more than 1000");
-			return false;
-		}
 		else{
-			//Add code to add the credit
-		}
+			System.out.println("You are not an admin");
+			System.out.println("You are now adding credit!");
+			System.out.println("Enter amount to add to your account");
 
-/*what it should look like i think
-	if(arrayNew[1] == "AA")
-	ask for username
-	make sure username matches
-	ask for amount of credit to add
-	add the credit
-	else
-	ask for amount of credit to add
-	add the credit
- */
-		//****in standard mode****
-		if(arrayNew[1] == "AA")
-		System.out.println(creditAdd + " has been added to account " + arrayNew[0]);
-		System.out.println(arrayNew[1]);
+			Double amountToAdd = in.nextDouble();
+			if(amountToAdd > 1000){
+				System.out.println("Cannot add over 1000 in a given session");
+				return false;
+			}
+			Double newBalance = currentUser.getBalance();
+
+			//Adding inputted amount to the balance of the current user
+			newBalance = amountToAdd + newBalance;
+			System.out.println("Your new balance is " + newBalance);
+		}
 		return true;
 	}
 	
