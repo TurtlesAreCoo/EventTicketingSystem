@@ -1,4 +1,3 @@
-package controller;
 
 import java.util.*;
 import java.io.*;
@@ -33,16 +32,24 @@ public class Controller {
 				}
 			} else { 
 				if (action.equals("buy"))  {
-					if (buy(in)) {
-						System.out.println("Buy transaction completed");
+					if (!currentUser.getType().equals("SS")) {
+						if (buy(in)) {
+							System.out.println("Buy transaction completed");
+						} else {
+							System.out.println("There was an error when trying to buy");
+						}
 					} else {
-						System.out.println("There was an error when trying to buy");
+						System.out.println("Error: Invalid account type.");
 					}
 				} else if (action.equals("sell"))  {
-					if (sell(in)) {
-						System.out.println("Sell transaction completed.");
+					if (!currentUser.getType().equals("BS")){
+						if (sell(in)) {
+							System.out.println("Sell transaction completed.");
+						} else {
+							System.out.println("There was an error when trying to sell.");
+						}
 					} else {
-						System.out.println("There was an error when trying to sell.");
+						System.out.println("Error: Invalid account type.");
 					}
 				} else if (action.equals("addCredit"))  {
 					if (addCredit(in)) {
@@ -97,9 +104,9 @@ public class Controller {
 					currentUser = null;
 				} else if (action.equals("exit")) {
 					exit = true;
-				} else {
+				} 
+				if (currentAccount != null)
 					printMenu();
-				}
 			}
 		}
 		//need to write the userList and the eventLIst in a way that it overrides the current ones.
@@ -315,6 +322,61 @@ public class Controller {
 		return true;
 	}
 	
+	//Create method 
+	private static boolean create() {
+		
+		System.out.println("Welcome to Create!");
+		Scanner nameIn = new Scanner(System.in);
+		System.out.println("Please enter the name of the user you would like to create.");
+		String newUserName = nameIn.nextLine();
+		//Check length of user name 
+		if(newUserName.length() > 15)
+		{
+			System.out.println("Error, user name must be below 15 charcters.");
+			return false; 
+		}
+		// Check to see if user name already exists in system. 
+		if ((userList.containsKey(newUserName))){
+			System.out.println("Error please enter a new username. " +  newUserName + " already exisits.");
+			return false;
+		}
+		
+		System.out.println("Please enter the user type:");
+		String newUserType = nameIn.nextLine();
+		
+		System.out.println("Please enter credit to be added:");
+		int newUserCreditAmount = nameIn.nextInt();
+		//checks credit limit
+		if(newUserCreditAmount > 999999)
+		{
+			System.out.println("Credit limit exceeded.");
+			return false;
+		}
+		userList.put(newUserName, new User(newUserName, newUserType, newUserCreditAmount));
+		createAndDeleteTransaction("01",currentUser.getUsername(), currentUser.getType(), String.valueOf(currentUser.getBalance()));
+		return true;	
+	}
+	
+	private static boolean delete() {
+		System.out.println("Welcome to Delete!");
+		Scanner nameIn = new Scanner(System.in);
+		System.out.println("Please enter the name of the user you would like to delete:");
+		String newUserName = nameIn.nextLine();
+		
+		if ((userList.containsKey(newUserName))){
+			if(newUserName.equals(currentUser.getUsername()))
+			{
+				System.out.println("Cannot delete current user.");
+				return false;
+			}
+			userList.remove(newUserName);
+			System.out.println(newUserName + " has been deleted.");
+			createAndDeleteTransaction("02",currentUser.getUsername(), currentUser.getType(), String.valueOf(currentUser.getBalance()));
+			return true;
+		}	
+		System.out.println(newUserName + " does not exist.");
+		return false;
+	}
 	//XX_EEEEEEEEEEEEEEEEEEE_SSSSSSSSSSSSS_TTT_PPPPPP
 	private static void buyAndSellTransaction(String type, String eventName, String sellerName, String numOfTickets, String ticketPrice) {
 		transactionList.add(type + " " + leftJustify(eventName,19) + " " + leftJustify(sellerName,13) + " " + zeroRightJustify(numOfTickets, 3) + " " + zeroRightJustify(ticketPrice,6));
@@ -329,6 +391,7 @@ public class Controller {
 	private static User login(Scanner in) {
 		System.out.println("Enter Username: ");
 		String name = in.nextLine();
+		System.out.println("name: " + name);
 		if (userList.containsKey(name)) {
 			return userList.get(name);
 		} else {
@@ -467,61 +530,6 @@ public class Controller {
 			welcomeBuy(currentUser.getUsername());
 		else
 			welcomeStandard(currentUser.getUsername());
-	}
-	//Create method 
-	private static boolean create() {
-		
-		System.out.println("Welcome to Create!");
-		Scanner nameIn = new Scanner(System.in);
-		System.out.println("Please enter the name of the user you would like to create.");
-		String newUserName = nameIn.nextLine();
-		//Check length of user name 
-		if(newUserName.length() > 15)
-		{
-			System.out.println("Error, user name must be below 15 charcters.");
-			return false; 
-		}
-		// Check to see if user name already exists in system. 
-		if ((userList.containsKey(newUserName))){
-			System.out.println("Error please enter a new username. " +  newUserName + " already exisits.");
-			return false;
-		}
-		
-		System.out.println("Please enter the user type:");
-		String newUserType = nameIn.nextLine();
-		
-		System.out.println("Please enter credit to be added:");
-		int newUserCreditAmount = nameIn.nextInt();
-		//checks credit limit
-		if(newUserCreditAmount > 999999)
-		{
-			System.out.println("Credit limit exceeded.");
-			return false;
-		}
-		userList.put(newUserName, new User(newUserName, newUserType, newUserCreditAmount));
-		createAndDeleteTransaction("01",currentUser.getUsername(), currentUser.getType(), String.valueOf(currentUser.getBalance()));
-		return true;	
-	}
-	
-	private static boolean delete() {
-		System.out.println("Welcome to Delete!");
-		Scanner nameIn = new Scanner(System.in);
-		System.out.println("Please enter the name of the user you would like to delete:");
-		String newUserName = nameIn.nextLine();
-		
-		if ((userList.containsKey(newUserName))){
-			if(newUserName.equals(currentUser.getUsername()))
-			{
-				System.out.println("Cannot delete current user.");
-				return false;
-			}
-			userList.remove(newUserName);
-			System.out.println(newUserName + " has been deleted.");
-			createAndDeleteTransaction("02",currentUser.getUsername(), currentUser.getType(), String.valueOf(currentUser.getBalance()));
-			return true;
-		}	
-		System.out.println(newUserName + " does not exist.");
-		return false;
 	}
 	
 	private static void welcomeAdmin(String name) {

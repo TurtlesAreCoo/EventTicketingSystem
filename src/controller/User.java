@@ -1,4 +1,3 @@
-package controller;
 
 public class User {
 	private String username;

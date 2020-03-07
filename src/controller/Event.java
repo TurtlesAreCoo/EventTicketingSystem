@@ -1,4 +1,4 @@
-package controller;
+
 
 public class Event {
 	private String eventName;
