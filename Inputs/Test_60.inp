@@ -3,3 +3,4 @@ admin
 Create
 UserNameExceedsCharacterLimit, FS
 logout
+exit
