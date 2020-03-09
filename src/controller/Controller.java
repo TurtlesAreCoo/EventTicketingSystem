@@ -27,7 +27,7 @@ public class Controller {
 					if (action.equals("exit")) {
 						System.out.println("Now exiting the system");
 						exit = true;
-					} else if (action.equals("loginw")) {
+					} else if (action.equals("login")) {
 						currentUser = login(in);
 						if (currentUser != null) {
 							printMenu();

@@ -1,5 +1,38 @@
-Welcome, Please enter login.
-Login Accepted.
-Hello, user1!
+Type login if you want to login, exit if you want to exit.
+Enter Username:
+name: StandardSell
+============================
+Hello StandardSell!
+============================
+Enter sell to Sell!
+Enter addCredit to Add Credit!
+Enter logout to Logout!
+Enter exit to exit the system!
 Error: Admin Privileges Required.
-Session Terminated.
+============================
+Hello StandardSell!
+============================
+Enter sell to Sell!
+Enter addCredit to Add Credit!
+Enter logout to Logout!
+Enter exit to exit the system!
+============================
+Hello StandardSell!
+============================
+Enter sell to Sell!
+Enter addCredit to Add Credit!
+Enter logout to Logout!
+Enter exit to exit the system!
+============================
+Hello StandardSell!
+============================
+Enter sell to Sell!
+Enter addCredit to Add Credit!
+Enter logout to Logout!
+Enter exit to exit the system!
+You have logged out
+3
+eventNumberOne
+eventNumberThree
+eventNumberTwo
+Exiting the system now

@@ -1,5 +1,5 @@
-exit            AA 000010E39
-StandardSell    SS 000011E37
-admin           AA 000011E37
-StandardFull    FS 000011E37
-StandardBuy     BS 000011E37
+standard        FS 00010E173
+StandardSell    SS 00011E264
+admin           AA 00011E264
+StandardFull    FS 00011E264
+StandardBuy     BS 00011E264
