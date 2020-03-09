@@ -290,7 +290,7 @@ public class Controller {
 		//Getting the event name
 		System.out.println("Please enter the event name.");
 		eventName = in.nextLine();
-		while (cancel == false && eventName.length() > 19) {
+		while (cancel == false && (eventName = in.nextLine()).length() > 19) {
 			System.out.println("You have entered an invalid event name please try again, or type cancel to cancel the transaction.");
 		}
 		if (eventName.toLowerCase().equals("cancel")){
