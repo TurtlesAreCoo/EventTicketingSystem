@@ -1,5 +1,5 @@
-standard        FS 00010E218
-StandardSell    SS 0Infinity
-admin           AA 0Infinity
-StandardFull    FS 0Infinity
-StandardBuy     BS 0Infinity
+standard        FS 000010E59
+StandardSell    SS 000010E59
+admin           AA 000010E59
+StandardFull    FS 000010E59
+StandardBuy     BS 000010E59
