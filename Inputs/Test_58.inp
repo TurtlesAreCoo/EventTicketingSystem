@@ -1,6 +1,8 @@
 Login
-admin
+Admin
 Create
-user2,FS
+user1
+FS
+10
 logout
 exit
