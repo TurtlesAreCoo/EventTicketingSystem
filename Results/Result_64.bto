@@ -1,7 +1,5 @@
 Type login if you want to login, exit if you want to exit.
-Login
 Enter Username: 
-name: StandardSell
 ============================
 Hello StandardSell!
 ============================
@@ -25,8 +23,4 @@ Enter addCredit to Add Credit!
 Enter logout to Logout!
 Enter exit to exit the system!
 You have logged out
-3
-eventNumberOne
-eventNumberThree
-eventNumberTwo
 Exiting the system now
