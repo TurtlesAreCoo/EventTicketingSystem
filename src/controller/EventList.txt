@@ -1,3 +1,3 @@
-eventNumberOne      SellerOne      010 50000000
-eventNumberThree    SellerTwo      001 1000000
-eventNumberTwo      SellerOne      010 0010E7
+eventNumberOne      SellerOne      010 050E49
+eventNumberThree    SellerTwo      001 010E47
+eventNumberTwo      SellerOne      010 010E49

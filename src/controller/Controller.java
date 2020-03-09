@@ -10,111 +10,119 @@ public class Controller {
 	
 	public static void main(String[] args) {
 		transactionList = new ArrayList<String>();
-		//reads the account lists currently with a hard coded accoutnList.txt file
-		readAccountList();
-		readEventList();
 		Scanner in = new Scanner(System.in);
 		boolean exit = false;
 		String action = "";
-		System.out.println("Type login if you want to login, exit if you want to exit.");
-		while (!(action = in.nextLine()).equals("exit") && exit == false) {
-			action = action.toLowerCase();
-			if (currentUser == null) {
-				if (action.equals("exit")) {
-					System.out.println("Now exiting the system");
-					exit = true;
-				} else if (action.equals("login")) {
-					currentUser = login(in);
+		//reads the account lists currently with a hard coded accoutnList.txt file
+		if (args.length == 0) {
+			System.out.println("Please enter the account and event list file name.");
+			exit = true;
+		} else {
+			readAccountList(args[0]);
+			readEventList(args[1]);
+			System.out.println("Type login if you want to login, exit if you want to exit.");
+			while (!(action = in.nextLine()).equals("exit") && exit == false) {
+				action = action.toLowerCase();
+				if (currentUser == null) {
+					if (action.equals("exit")) {
+						System.out.println("Now exiting the system");
+						exit = true;
+					} else if (action.equals("loginw")) {
+						currentUser = login(in);
+						if (currentUser != null) {
+							printMenu();
+						} else {
+							System.out.println("Type login if you want to login, exit if you want to exit.");
+						}
+					} else {
+							System.out.println("Type login if you want to login, exit if you want to exit.");
+					}
+				} else { 
+					if (action.equals("buy"))  {
+						if (!currentUser.getType().equals("SS")) {
+							if (buy(in)) {
+								System.out.println("Buy transaction completed");
+							} else {
+								System.out.println("There was an error when trying to buy");
+							}
+						} else {
+							System.out.println("Error: Invalid account type.");
+						}
+					} else if (action.equals("sell"))  {
+						if (!currentUser.getType().equals("BS")){
+							if (sell(in)) {
+								System.out.println("Sell transaction completed.");
+							} else {
+								System.out.println("There was an error when trying to sell.");
+							}
+						} else {
+							System.out.println("Error: Invalid account type.");
+						}
+					} else if (action.equals("addCredit"))  {
+						if (addCredit(in)) {
+							System.out.println("You have successfully added credit");
+							break;
+						} else {
+							System.out.println("There was an error when trying to add credit");
+							break;
+						}
+					} else if (action.equals("refund"))  {
+						if (refund(in)) {
+							System.out.println("You have successfully refunded");
+							break;
+						} else {
+							System.out.println("There was an error when trying to refund");
+							break;
+						}
+					} else if (action.equals("create")) {
+						// check Privileges of account
+						if(currentUser.getType().equals("AA")){
+						
+						// Call create method 
+						if(create())
+						{
+							System.out.println("User was created successfully.");
+							 
+						}else {
+							System.out.println("User was not created successfully.");
+						}
+						}else {
+							System.out.println("Error: Admin Privileges Required.");
+						}
+						
+					} else if (action.equals("delete"))  {
+						// check Privileges of account
+						if(currentUser.getType().equals("AA")){
+						//call delete method	
+						if(delete())
+						{
+							System.out.println("User was deleted successfully.");
+							 
+						}else {
+							System.out.println("No user was deleted.");
+						}
+						}else {
+							System.out.println("Error: Admin Privileges Required.");
+						}
+						
+						
+					} else if (action.equals("logout")) {
+						System.out.println("You have logged out");
+						currentUser = null;
+					} else if (action.equals("exit")) {
+						exit = true;
+					} 
 					if (currentUser != null)
 						printMenu();
-				} else {
-					System.out.println("Type login if you want to login, exit if you want to exit.");
 				}
-			} else { 
-				if (action.equals("buy"))  {
-					if (!currentUser.getType().equals("SS")) {
-						if (buy(in)) {
-							System.out.println("Buy transaction completed");
-						} else {
-							System.out.println("There was an error when trying to buy");
-						}
-					} else {
-						System.out.println("Error: Invalid account type.");
-					}
-				} else if (action.equals("sell"))  {
-					if (!currentUser.getType().equals("BS")){
-						if (sell(in)) {
-							System.out.println("Sell transaction completed.");
-						} else {
-							System.out.println("There was an error when trying to sell.");
-						}
-					} else {
-						System.out.println("Error: Invalid account type.");
-					}
-				} else if (action.equals("addCredit"))  {
-					if (addCredit(in)) {
-						System.out.println("You have successfully added credit");
-						break;
-					} else {
-						System.out.println("There was an error when trying to add credit");
-						break;
-					}
-				} else if (action.equals("refund"))  {
-					if (refund(in)) {
-						System.out.println("You have successfully refunded");
-						break;
-					} else {
-						System.out.println("There was an error when trying to refund");
-						break;
-					}
-				} else if (action.equals("create")) {
-					// check Privileges of account
-					if(currentUser.getType().equals("AA")){
-					
-					// Call create method 
-					if(create())
-					{
-						System.out.println("User was created successfully.");
-						 
-					}else {
-						System.out.println("User was not created successfully.");
-					}
-					}else {
-						System.out.println("Error: Admin Privileges Required.");
-					}
-					
-				} else if (action.equals("delete"))  {
-					// check Privileges of account
-					if(currentUser.getType().equals("AA")){
-					//call delete method	
-					if(delete())
-					{
-						System.out.println("User was deleted successfully.");
-						 
-					}else {
-						System.out.println("No user was deleted.");
-					}
-					}else {
-						System.out.println("Error: Admin Privileges Required.");
-					}
-					
-					
-				} else if (action.equals("logout")) {
-					System.out.println("You have logged out");
-					currentUser = null;
-				} else if (action.equals("exit")) {
-					exit = true;
-				} 
-				if (currentAccount != null)
-					printMenu();
 			}
+			//need to write the userList and the eventLIst in a way that it overrides the current ones.
+			writeAccountList(args[0]);
+			writeEventList(args[1]);
+			writeTransactionList();
+			System.out.println("Exiting the system now");
+			in.close();
 		}
-		//need to write the userList and the eventLIst in a way that it overrides the current ones.
-		writeAccountList();
-		writeEventList();
-		writeTransactionList();
-		System.out.println("Exiting the system now");
-		in.close();
 	}
 	
 	
@@ -391,18 +399,18 @@ public class Controller {
 	private static User login(Scanner in) {
 		System.out.println("Enter Username: ");
 		String name = in.nextLine();
-		System.out.println("name: " + name);
 		if (userList.containsKey(name)) {
 			return userList.get(name);
 		} else {
+			System.out.println("user " + name + " does not exist in the database.");
 			return null;
 		}
 	}
 	
-	private static void readAccountList() {
+	private static void readAccountList(String filename) {
 		userList = new HashMap<String,User>();
 		try {
-			File accountFile = new File("AccountList.txt");
+			File accountFile = new File(filename);
 			Scanner reader = new Scanner(accountFile);
 			String temp = "";
 			String[] ele;
@@ -418,10 +426,10 @@ public class Controller {
 		}
 	}
 	
-	private static void readEventList() {
+	private static void readEventList(String filename) {
 		eventList = new HashMap<String,Event>();
 		try {
-			File eventFile = new File("EventList.txt");
+			File eventFile = new File(filename);
 			Scanner reader = new Scanner (eventFile);
 			String temp = "";
 			String[] ele;
@@ -438,11 +446,11 @@ public class Controller {
 	}
 	
 	
-	private static void writeAccountList() {
+	private static void writeAccountList(String filename) {
 		String key;
 		User temp;
 		try {
-			FileWriter writer = new FileWriter("AccountList.txt",false);
+			FileWriter writer = new FileWriter(filename,false);
 			for (Map.Entry mapElement : userList.entrySet()) { 
 	            key = (String)mapElement.getKey(); 
 	            temp = userList.get(key);
@@ -455,16 +463,14 @@ public class Controller {
 		}
 	}
 	
-	private static void writeEventList() {
+	private static void writeEventList(String filename) {
 		String key;
 		Event temp;
-		System.out.println(eventList.size());
 		try {
-			FileWriter writer = new FileWriter("EventList.txt",false);
+			FileWriter writer = new FileWriter(filename ,false);
 			for (Map.Entry mapElement : eventList.entrySet()) { 
 	            key = (String)mapElement.getKey(); 
 	            temp = eventList.get(key);
-	            System.out.println(key);
 	            writer.write(temp.toString() + "\n"); 
 	        } 
 			writer.close();
