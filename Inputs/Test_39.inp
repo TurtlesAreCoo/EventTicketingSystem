@@ -1,8 +1,8 @@
 login
 admin
 refund
-buyuser
-selluser
+StandardBuy
+StandardSell
 100
 logout
 exit
