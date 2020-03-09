@@ -3,3 +3,9 @@ Login Accepted.						      |	Type login if you want to login, exit if you want t
 Hello, admin!						      |	Type login if you want to login, exit if you want to exit.
 Session Terminated.					      \	Type login if you want to login, exit if you want to exit.
 							      >	Exiting the system now
+Welcome, Please enter login.				      |	Type login if you want to login, exit if you want to exit.
+Login Accepted.						      |	Enter Username: 
+Hello, admin!						      |	user admin does not exist in the database.
+Session Terminated.					      \	Type login if you want to login, exit if you want to exit.
+							      >	Type login if you want to login, exit if you want to exit.
+							      >	Exiting the system now

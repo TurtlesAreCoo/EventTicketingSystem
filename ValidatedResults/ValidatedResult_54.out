@@ -7,3 +7,42 @@ cannot add money into account							      |	Type login if you want to login, ex
 session terminated							      |	Type login if you want to login, exit if you want to exit.
 							      |	Type login if you want to login, exit if you want to exit.
 							      >	Exiting the system now
+Welcome, Please enter login.							      |	Type login if you want to login, exit if you want to exit.
+Login accepted.							      |	Enter Username: 
+Hello, standard							      |	============================
+Add Credit clicked							      |	Hello StandardSell!
+standard has requested for 1001 credit to be added into their							      |	============================
+cannot add money into account							      |	Enter sell to Sell!
+session terminated							      |	Enter addCredit to Add Credit!
+							      |	Enter logout to Logout!
+							      >	Enter exit to exit the system!
+							      >	============================
+							      >	Hello StandardSell!
+							      >	============================
+							      >	Enter sell to Sell!
+							      >	Enter addCredit to Add Credit!
+							      >	Enter logout to Logout!
+							      >	Enter exit to exit the system!
+							      >	============================
+							      >	Hello StandardSell!
+							      >	============================
+							      >	Enter sell to Sell!
+							      >	Enter addCredit to Add Credit!
+							      >	Enter logout to Logout!
+							      >	Enter exit to exit the system!
+							      >	============================
+							      >	Hello StandardSell!
+							      >	============================
+							      >	Enter sell to Sell!
+							      >	Enter addCredit to Add Credit!
+							      >	Enter logout to Logout!
+							      >	Enter exit to exit the system!
+							      >	============================
+							      >	Hello StandardSell!
+							      >	============================
+							      >	Enter sell to Sell!
+							      >	Enter addCredit to Add Credit!
+							      >	Enter logout to Logout!
+							      >	Enter exit to exit the system!
+							      >	You have logged out
+							      >	Exiting the system now

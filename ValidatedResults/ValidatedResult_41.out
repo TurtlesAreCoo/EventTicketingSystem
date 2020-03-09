@@ -5,4 +5,11 @@ Refund Clicked							      |	Type login if you want to login, exit if you want 
 buyuser has requested a refund							      |	Type login if you want to login, exit if you want to exit.
 Seller Username is missing							      |	Type login if you want to login, exit if you want to exit.
 cannot process transfer							      |	Exiting the system now
-session terminated					      <
+session terminated					      <Welcome, Please enter login.							      |	Type login if you want to login, exit if you want to exit.
+Login Accepted.							      |	Enter Username: 
+Hello, admin!							      |	user admin does not exist in the database.
+Refund Clicked							      |	Type login if you want to login, exit if you want to exit.
+buyuser has requested a refund							      |	Type login if you want to login, exit if you want to exit.
+Seller Username is missing							      |	Type login if you want to login, exit if you want to exit.
+cannot process transfer							      |	Type login if you want to login, exit if you want to exit.
+session terminated					      \	Exiting the system now

@@ -4,3 +4,10 @@ Hello, standardBuyUser!					      |	Type login if you want to login, exit if you
 Error: Invalid account type for this transaction.	      |	Type login if you want to login, exit if you want to exit.
 Session Terminated.					      \	Type login if you want to login, exit if you want to exit.
 							      >	Exiting the system now
+Welcome, Please enter login.				      |	Type login if you want to login, exit if you want to exit.
+Login Accepted.						      |	Enter Username: 
+Hello, standardBuyUser!					      |	user standardBuyUser does not exist in the database.
+Error: Invalid account type for this transaction.	      |	Type login if you want to login, exit if you want to exit.
+Session Terminated.					      \	Type login if you want to login, exit if you want to exit.
+							      >	Type login if you want to login, exit if you want to exit.
+							      >	Exiting the system now

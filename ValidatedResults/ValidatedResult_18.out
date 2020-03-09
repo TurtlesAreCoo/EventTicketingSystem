@@ -8,3 +8,16 @@ Type 'Yes' to Confirm or 'No' to abandon transaction.	      |	Type login if you 
 Error: Invalid conformation. 				      |	Type login if you want to login, exit if you want to exit.
 Session Terminated.					      \	Type login if you want to login, exit if you want to exit.
 							      >	Exiting the system now
+Welcome, Please enter login.				      |	Type login if you want to login, exit if you want to exit.
+Login Accepted.						      |	Enter Username: 
+Hello, standard!					      |	============================
+Please enter event name.				      |	Hello standard!
+How many tickets do you want to purchase?		      |	============================
+Please enter seller's name.				      |	Enter sell to Sell!
+Type 'Yes' to Confirm or 'No' to abandon transaction.	      |	Enter buy to Buy!
+Error: Invalid conformation. 				      |	Enter addCredit to Add Credit!
+Session Terminated.					      \	Enter logout to Logout!
+							      >	Enter exit to exit the system!
+							      >	Please enter the Event name
+							      >	Please enter the Sellers name
+							      >	Enter the number of tickets you want to purchase (max 4)

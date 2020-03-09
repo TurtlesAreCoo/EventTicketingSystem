@@ -5,3 +5,16 @@ Please enter event name.				      |	Type login if you want to login, exit if you
 Error: Event not in directory				      |	Type login if you want to login, exit if you want to exit.
 Session Terminated.					      \	Type login if you want to login, exit if you want to exit.
 							      >	Exiting the system now
+Welcome, Please enter login.				      |	Type login if you want to login, exit if you want to exit.
+Login Accepted.						      |	Enter Username: 
+Hello, standard!					      |	============================
+Please enter event name.				      |	Hello standard!
+Error: Event not in directory				      |	============================
+Session Terminated.					      \	Enter sell to Sell!
+							      >	Enter buy to Buy!
+							      >	Enter addCredit to Add Credit!
+							      >	Enter logout to Logout!
+							      >	Enter exit to exit the system!
+							      >	Please enter the Event name
+							      >	Please enter the Sellers name
+							      >	Enter the number of tickets you want to purchase (max 4)

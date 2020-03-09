@@ -5,3 +5,26 @@ Please enter what you want your Event Title to be.	      |	Type login if you wan
 Error: Invalid event title name.			      |	Type login if you want to login, exit if you want to exit.
 Session Terminated.					      \	Type login if you want to login, exit if you want to exit.
 							      >	Exiting the system now
+Welcome, Please enter login.				      |	Type login if you want to login, exit if you want to exit.
+Login Accepted.						      |	Enter Username: 
+Hello, standard!					      |	============================
+Please enter what you want your Event Title to be.	      |	Hello standard!
+Error: Invalid event title name.			      |	============================
+Session Terminated.					      \	Enter sell to Sell!
+							      >	Enter buy to Buy!
+							      >	Enter addCredit to Add Credit!
+							      >	Enter logout to Logout!
+							      >	Enter exit to exit the system!
+							      >	Please enter the event name.
+							      >	Sell transaction cancelled.
+							      >	There was an error when trying to sell.
+							      >	============================
+							      >	Hello standard!
+							      >	============================
+							      >	Enter sell to Sell!
+							      >	Enter buy to Buy!
+							      >	Enter addCredit to Add Credit!
+							      >	Enter logout to Logout!
+							      >	Enter exit to exit the system!
+							      >	You have logged out
+							      >	Exiting the system now

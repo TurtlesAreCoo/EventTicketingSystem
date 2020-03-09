@@ -1,5 +1,5 @@
-standard        FS 000010E59
-StandardSell    SS 000010E59
-Admin           AA 000010E59
-StandardFull    FS 000010E59
-StandardBuy     BS 000010E59
+standard        FS 000010E99
+StandardSell    SS 000010E99
+Admin           AA 000010E99
+StandardFull    FS 000010E99
+StandardBuy     BS 000010E99

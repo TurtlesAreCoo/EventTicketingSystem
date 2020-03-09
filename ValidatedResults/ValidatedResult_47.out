@@ -7,3 +7,13 @@ myuser							      |	Type login if you want to login, exit if you want to exit.
 1000 in credit has been added to myuser							      |	Type login if you want to login, exit if you want to exit.
 session terminated							      |	Type login if you want to login, exit if you want to exit.
 							      >	Exiting the system now
+Welcome, Please enter login.							      |	Type login if you want to login, exit if you want to exit.
+Login accepted.							      |	Enter Username: 
+Hello, admin!							      |	user admin  does not exist in the database.
+Add Credit clicked							      |	Type login if you want to login, exit if you want to exit.
+1000							      |	Type login if you want to login, exit if you want to exit.
+myuser							      |	Type login if you want to login, exit if you want to exit.
+1000 in credit has been added to myuser							      |	Type login if you want to login, exit if you want to exit.
+session terminated							      |	Type login if you want to login, exit if you want to exit.
+							      >	Type login if you want to login, exit if you want to exit.
+							      >	Exiting the system now

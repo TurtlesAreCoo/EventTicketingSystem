@@ -7,3 +7,19 @@ Please enter the amount of tickets you are selling.	      |	Type login if you wa
 Your tickets have successfully been listed.		      |	Type login if you want to login, exit if you want to exit.
 Session Terminated.					      \	Type login if you want to login, exit if you want to exit.
 							      >	Exiting the system now
+Welcome, Please enter login.				      |	Type login if you want to login, exit if you want to exit.
+Login Accepted.						      |	Enter Username: 
+Hello, standard!					      |	============================
+Please enter what you want your Event Title to be.	      |	Hello standard!
+Please enter how much you want your tickets to be listed for. |	============================
+							      >	Enter sell to Sell!
+							      >	Enter buy to Buy!
+							      >	Enter addCredit to Add Credit!
+							      >	Enter logout to Logout!
+							      >	Enter exit to exit the system!
+							      >	Please enter the event name.
+							      >	Please enter the price per ticket.
+Please enter the amount of tickets you are selling.		Please enter the amount of tickets you are selling.
+Your tickets have successfully been listed.		      |	you have entered an invalid number of tickets please try agai
+Session Terminated.					      \	you have entered an invalid number of tickets please try agai
+							      >	you have entered an invalid number of tickets please try agai

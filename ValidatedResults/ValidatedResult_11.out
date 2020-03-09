@@ -6,3 +6,16 @@ How many tickets do you want to purchase?		      |	Type login if you want to log
 Error: Invalid purchase amount.				      |	Type login if you want to login, exit if you want to exit.
 Session Terminated.					      \	Type login if you want to login, exit if you want to exit.
 							      >	Exiting the system now
+Welcome, Please enter login.				      |	Type login if you want to login, exit if you want to exit.
+Login Accepted.						      |	Enter Username: 
+Hello, standard!					      |	============================
+Please enter event name.				      |	Hello standard!
+How many tickets do you want to purchase?		      |	============================
+Error: Invalid purchase amount.				      |	Enter sell to Sell!
+Session Terminated.					      \	Enter buy to Buy!
+							      >	Enter addCredit to Add Credit!
+							      >	Enter logout to Logout!
+							      >	Enter exit to exit the system!
+							      >	Please enter the Event name
+							      >	Please enter the Sellers name
+							      >	Enter the number of tickets you want to purchase (max 4)

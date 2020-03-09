@@ -6,3 +6,12 @@ usernameNotExist wants to add 2000 to credit							      |	Type login if you wa
 cannot process							      |	Type login if you want to login, exit if you want to exit.
 session terminated							      |	Type login if you want to login, exit if you want to exit.
 							      >	Exiting the system now
+Welcome, please enter login.							      |	Type login if you want to login, exit if you want to exit.
+Login accepted.							      |	Enter Username: 
+Hello, admin!							      |	user admin does not exist in the database.
+Add Credit Clicked							      |	Type login if you want to login, exit if you want to exit.
+usernameNotExist wants to add 2000 to credit							      |	Type login if you want to login, exit if you want to exit.
+cannot process							      |	Type login if you want to login, exit if you want to exit.
+session terminated							      |	Type login if you want to login, exit if you want to exit.
+							      >	Type login if you want to login, exit if you want to exit.
+							      >	Exiting the system now

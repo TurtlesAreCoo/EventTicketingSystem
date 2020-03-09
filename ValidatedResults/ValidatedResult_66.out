@@ -5,3 +5,39 @@ Error: user2 does not exist				      |	Type login if you want to login, exit if 
 Session Terminated.					      \	Type login if you want to login, exit if you want to exit.
 							      >	Type login if you want to login, exit if you want to exit.
 							      >	Exiting the system now
+Type login if you want to login, exit if you want to exit.	Type login if you want to login, exit if you want to exit.
+Login							      <
+Enter Username: 						Enter Username: 
+name: Admin						      <
+============================					============================
+Hello Admin!							Hello Admin!
+============================					============================
+Enter create to Create!						Enter create to Create!
+Enter delete to Delete!						Enter delete to Delete!
+Enter sell to Sell!						Enter sell to Sell!
+Enter buy to Buy!						Enter buy to Buy!
+Enter refund to Refund!						Enter refund to Refund!
+Enter addCredit to Add Credit!					Enter addCredit to Add Credit!
+Enter logout to Logout!						Enter logout to Logout!
+Enter exit to exit the system!					Enter exit to exit the system!
+Welcome to Delete!						Welcome to Delete!
+Please enter the name of the user you would like to delete:	Please enter the name of the user you would like to delete:
+user2 does not exist.					      <
+No user was deleted.					      <
+============================				      <
+Hello Admin!						      <
+============================				      <
+Enter create to Create!					      <
+Enter delete to Delete!					      <
+Enter sell to Sell!					      <
+Enter buy to Buy!					      <
+Enter refund to Refund!					      <
+Enter addCredit to Add Credit!				      <
+Enter logout to Logout!					      <
+Enter exit to exit the system!				      <
+You have logged out					      <
+3							      <
+eventNumberOne						      <
+eventNumberThree					      <
+eventNumberTwo						      <
+Exiting the system now					      <
