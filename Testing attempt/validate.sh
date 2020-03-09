@@ -1,0 +1,77 @@
+#!/bin/bash
+for i in *.txt;         #for all text files in the directory
+do
+echo "running test $i"
+# diff -y expectedoutput.txt actualoutput.txt  >> validatedresults.out #appends all text files to results.out
+diff -y Result_1.bto actualoutput1.txt  >> validatedresults.out
+diff -y Result_2.bto actualoutput2.txt  >> validatedresults.out
+diff -y Result_3.bto actualoutput3.txt  >> validatedresults.out
+diff -y Result_4.bto actualoutput4.txt  >> validatedresults.out
+diff -y Result_5.bto actualoutput5.txt  >> validatedresults.out
+diff -y Result_6.bto actualoutput6.txt  >> validatedresults.out
+diff -y Result_7.bto actualoutput7.txt  >> validatedresults.out
+diff -y Result_8.bto actualoutput8.txt  >> validatedresults.out
+diff -y Result_9.bto actualoutput9.txt  >> validatedresults.out
+diff -y Result_10.bto actualoutput10.txt  >> validatedresults.out
+diff -y Result_11.bto actualoutput11.txt  >> validatedresults.out
+diff -y Result_12.bto actualoutput12.txt  >> validatedresults.out
+diff -y Result_13.bto actualoutput13.txt  >> validatedresults.out
+diff -y Result_14.bto actualoutput14.txt  >> validatedresults.out
+diff -y Result_15.bto actualoutput15.txt  >> validatedresults.out
+diff -y Result_16.bto actualoutput16.txt  >> validatedresults.out
+diff -y Result_17.bto actualoutput17.txt  >> validatedresults.out
+diff -y Result_18.bto actualoutput18.txt  >> validatedresults.out
+diff -y Result_19.bto actualoutput19.txt  >> validatedresults.out
+diff -y Result_20.bto actualoutput20.txt  >> validatedresults.out
+diff -y Result_21.bto actualoutput21.txt  >> validatedresults.out
+diff -y Result_22.bto actualoutput22.txt  >> validatedresults.out
+diff -y Result_23.bto actualoutput23.txt  >> validatedresults.out
+diff -y Result_24.bto actualoutput24.txt  >> validatedresults.out
+diff -y Result_25.bto actualoutput25.txt  >> validatedresults.out
+diff -y Result_26.bto actualoutput26.txt  >> validatedresults.out
+diff -y Result_27.bto actualoutput27.txt  >> validatedresults.out
+diff -y Result_28.bto actualoutput28.txt  >> validatedresults.out
+diff -y Result_29.bto actualoutput29.txt  >> validatedresults.out
+diff -y Result_30.bto actualoutput30.txt  >> validatedresults.out
+diff -y Result_31.bto actualoutput31.txt  >> validatedresults.out
+diff -y Result_32.bto actualoutput32.txt  >> validatedresults.out
+diff -y Result_33.bto actualoutput33.txt  >> validatedresults.out
+diff -y Result_34.bto actualoutput34.txt  >> validatedresults.out
+diff -y Result_35.bto actualoutput35.txt  >> validatedresults.out
+diff -y Result_36.bto actualoutput36.txt  >> validatedresults.out
+diff -y Result_37.bto actualoutput37.txt  >> validatedresults.out
+diff -y Result_38.bto actualoutput38.txt  >> validatedresults.out
+diff -y Result_39.bto actualoutput39.txt  >> validatedresults.out
+diff -y Result_40.bto actualoutput40.txt  >> validatedresults.out
+diff -y Result_41.bto actualoutput41.txt  >> validatedresults.out
+diff -y Result_42.bto actualoutput42.txt  >> validatedresults.out
+diff -y Result_43.bto actualoutput43.txt  >> validatedresults.out
+diff -y Result_44.bto actualoutput44.txt  >> validatedresults.out
+diff -y Result_45.bto actualoutput45.txt  >> validatedresults.out
+diff -y Result_46.bto actualoutput46.txt  >> validatedresults.out
+diff -y Result_47.bto actualoutput47.txt  >> validatedresults.out
+diff -y Result_48.bto actualoutput48.txt  >> validatedresults.out
+diff -y Result_49.bto actualoutput49.txt  >> validatedresults.out
+diff -y Result_50.bto actualoutput50.txt  >> validatedresults.out
+diff -y Result_51.bto actualoutput51.txt  >> validatedresults.out
+diff -y Result_52.bto actualoutput52.txt  >> validatedresults.out
+diff -y Result_53.bto actualoutput53.txt  >> validatedresults.out
+diff -y Result_54.bto actualoutput54.txt  >> validatedresults.out
+diff -y Result_55.bto actualoutput55.txt  >> validatedresults.out
+diff -y Result_56.bto actualoutput56.txt  >> validatedresults.out
+diff -y Result_57.bto actualoutput57.txt  >> validatedresults.out
+diff -y Result_58.bto actualoutput58.txt  >> validatedresults.out
+diff -y Result_59.bto actualoutput59.txt  >> validatedresults.out
+diff -y Result_60.bto actualoutput60.txt  >> validatedresults.out
+diff -y Result_61.bto actualoutput61.txt  >> validatedresults.out
+diff -y Result_62.bto actualoutput62.txt  >> validatedresults.out
+diff -y Result_63.bto actualoutput63.txt  >> validatedresults.out
+diff -y Result_64.bto actualoutput64.txt  >> validatedresults.out
+diff -y Result_65.bto actualoutput65.txt  >> validatedresults.out
+diff -y Result_66.bto actualoutput66.txt  >> validatedresults.out
+diff -y Result_67.bto actualoutput67.txt  >> validatedresults.out
+diff -y Result_68.bto actualoutput68.txt  >> validatedresults.out
+diff -y Result_69.bto actualoutput69.txt  >> validatedresults.out
+diff -y Result_70.bto actualoutput70.txt  >> validatedresults.out
+diff -y Result_71.bto actualoutput71.txt  >> validatedresults.out
+done
