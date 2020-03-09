@@ -1,6 +1,8 @@
 Login
-admin
+Admin
 Create
-UserNameExceedsCharacterLimit, FS
+UserNameExceedsCharacterLimit
+FS
+10
 logout
 exit
