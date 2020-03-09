@@ -1,4 +1,5 @@
 Type login if you want to login, exit if you want to exit.
+<<<<<<< HEAD
 Enter Username: 
 ============================
 Hello standard!
@@ -11,3 +12,13 @@ Enter exit to exit the system!
 Please enter the Event name
 Please enter the Sellers name
 Enter the number of tickets you want to purchase (max 4)
+=======
+Type login if you want to login, exit if you want to exit.
+Type login if you want to login, exit if you want to exit.
+Type login if you want to login, exit if you want to exit.
+Type login if you want to login, exit if you want to exit.
+Type login if you want to login, exit if you want to exit.
+Type login if you want to login, exit if you want to exit.
+Type login if you want to login, exit if you want to exit.
+Exiting the system now
+>>>>>>> 7aff6007f9fcd0a635c7399d33e2247492e79825

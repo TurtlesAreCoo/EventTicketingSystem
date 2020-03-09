@@ -1,4 +1,5 @@
 Type login if you want to login, exit if you want to exit.
+<<<<<<< HEAD
 Enter Username: 
 ============================
 Hello standard!
@@ -9,4 +10,9 @@ Enter addCredit to Add Credit!
 Enter logout to Logout!
 Enter exit to exit the system!
 You have logged out
+=======
+Type login if you want to login, exit if you want to exit.
+Type login if you want to login, exit if you want to exit.
+Type login if you want to login, exit if you want to exit.
+>>>>>>> 7aff6007f9fcd0a635c7399d33e2247492e79825
 Exiting the system now

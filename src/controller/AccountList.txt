@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 standard        FS 00010E173
 StandardSell    SS 00011E264
 admin           AA 00011E264
 StandardFull    FS 00011E264
 StandardBuy     BS 00011E264
+=======
+exit            AA 00010E111
+StandardSell    SS 00011E109
+admin           AA 00011E109
+StandardFull    FS 00011E109
+StandardBuy     BS 00011E109
+>>>>>>> 7aff6007f9fcd0a635c7399d33e2247492e79825
