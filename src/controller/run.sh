@@ -9,5 +9,5 @@ for i in {1..72}
 do 
 	echo "running test $i"
 	javac Controller.java
-	java Controller AccountList.txt EventList.txt < "$DIR/Inputs/Test_$i.inp" > "$DIR/Osutputs/Ouptut_$i.out"
+	java Controller AccountList.txt EventList.txt < "$DIR/Inputs/Test_$i.inp" > "$DIR/Outputs/Output_$i.out"
 done
