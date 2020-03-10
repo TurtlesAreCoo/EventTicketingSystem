@@ -79,13 +79,13 @@ public class Controller {
 						if(currentUser.getType().equals("AA")){
 						
 						// Call create method 
-						if(create())
-						{
-							System.out.println("User was created successfully.");
-							 
-						}else {
-							System.out.println("User was not created successfully.");
-						}
+							if(create(in))
+							{
+								System.out.println("User was created successfully.");
+								 
+							}else {
+								System.out.println("User was not created successfully.");
+							}
 						}else {
 							System.out.println("Error: Admin Privileges Required.");
 						}
@@ -331,10 +331,10 @@ public class Controller {
 	}
 	
 	//Create method 
-	private static boolean create() {
+	private static boolean create(Scanner nameIn) {
 		
 		System.out.println("Welcome to Create!");
-		Scanner nameIn = new Scanner(System.in);
+		// Scanner nameIn = new Scanner(System.in);
 		System.out.println("Please enter the name of the user you would like to create.");
 		String newUserName = nameIn.nextLine();
 		//Check length of user name 
