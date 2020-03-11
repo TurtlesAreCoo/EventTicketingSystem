@@ -1,3 +1,3 @@
-Admin           AA 00001000
-StandardSell    SS 00001000
-StandardFull    FS 00001000
+Admin           AA 000010000
+StandardSell    SS 000010000
+StandardFull    FS 000010000

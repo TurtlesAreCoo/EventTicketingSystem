@@ -417,7 +417,7 @@ public class Controller {
 			while (reader.hasNextLine()) {
 				temp = reader.nextLine();
 				ele = temp.split("\\s+");
-				userList.put(ele[0], new User(ele[0], ele[1], Double.valueOf(ele[2])));
+				userList.put(ele[0], new User(ele[0], ele[1], Double.valueOf(ele[2])/100));
 			}
 			reader.close();
 		} catch (FileNotFoundException e) {
@@ -436,7 +436,7 @@ public class Controller {
 			while (reader.hasNextLine()) {
 				temp = reader.nextLine();
 				ele = temp.split("\\s+");
-				eventList.put(ele[0], new Event(ele[0], ele[1], Integer.valueOf(ele[2]), Double.valueOf(ele[3])));
+				eventList.put(ele[0], new Event(ele[0], ele[1], Integer.valueOf(ele[2]), Double.valueOf(ele[3])/100));
 			}
 			reader.close();
 		} catch (FileNotFoundException e) {
