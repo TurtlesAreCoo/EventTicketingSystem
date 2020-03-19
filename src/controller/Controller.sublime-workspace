@@ -3,6 +3,10 @@
 	{
 		"selected_items":
 		[
+			[
+				"transact",
+				"transactionList"
+			]
 		]
 	},
 	"buffers":
@@ -80,13 +84,14 @@
 	},
 	"file_history":
 	[
+		"/Users/kingsleylam/git/EventTicketingSystem/src/controller/BackEnd.java",
+		"/Users/kingsleylam/git/EventTicketingSystem/src/controller/AccountList.txt",
 		"/Users/kingsleylam/git/EventTicketingSystem/src/controller/Controller.java",
 		"/Users/kingsleylam/git/CPS706-Assignment/src/ServerThread.java",
 		"/Users/kingsleylam/git/CPS706-Assignment/src/Server.java",
 		"/Users/kingsleylam/git/CPS706-Assignment/src/Record.java",
 		"/Users/kingsleylam/git/CPS706-Assignment/src/ClientThread.java",
 		"/Users/kingsleylam/git/CPS706-Assignment/src/Client.java",
-		"/Users/kingsleylam/git/EventTicketingSystem/src/controller/AccountList.txt",
 		"/Users/kingsleylam/git/EventTicketingSystem/src/controller/EventList.txt",
 		"/Users/kingsleylam/git/EventTicketingSystem/src/controller/TransactionList.txt",
 		"/Users/kingsleylam/git/EventTicketingSystem/TransactionList.txt",
@@ -139,7 +144,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 68.0
 	},
 	"layout":
 	{
