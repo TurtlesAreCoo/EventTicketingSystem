@@ -9,6 +9,7 @@ public class Controller {
 	private static HashMap<String,Event> eventList;
 	
 	public static void main(String[] args) {
+		BackEnd fileEditor = new BackEnd(args[0],args[1]);
 		transactionList = new ArrayList<String>();
 		Scanner in = new Scanner(System.in);
 		boolean exit = false;
@@ -18,8 +19,8 @@ public class Controller {
 			System.out.println("Please enter the account and event list file name.");
 			exit = true;
 		} else {
-			readAccountList(args[0]);
-			readEventList(args[1]);
+			userList = fileEditor.readAccountList(args[0]);
+			eventList = fileEditor.readEventList(args[1]);
 			System.out.println("Type login if you want to login, exit if you want to exit.");
 			while (!(action = in.nextLine()).equals("exit") && exit == false) {
 				action = action.toLowerCase();
@@ -117,9 +118,9 @@ public class Controller {
 				}
 			}
 			//need to write the userList and the eventLIst in a way that it overrides the current ones.
-			writeAccountList(args[0]);
-			writeEventList(args[1]);
-			writeTransactionList();
+			fileEditor.writeAccountList(args[0], userList);
+			fileEditor.writeEventList(args[1], eventList);
+			fileEditor.writeTransactionList(transactionList);
 			System.out.println("Exiting the system now");
 			in.close();
 		}
@@ -405,102 +406,6 @@ public class Controller {
 			System.out.println("user " + name + " does not exist in the database.");
 			return null;
 		}
-	}
-	
-	private static void readAccountList(String filename) {
-		userList = new HashMap<String,User>();
-		try {
-			File accountFile = new File(filename);
-			Scanner reader = new Scanner(accountFile);
-			String temp = "";
-			String[] ele;
-			while (reader.hasNextLine()) {
-				temp = reader.nextLine();
-				ele = temp.split("\\s+");
-				userList.put(ele[0], new User(ele[0], ele[1], Double.valueOf(ele[2])/100));
-			}
-			reader.close();
-		} catch (FileNotFoundException e) {
-		      System.out.println("An error occurred." + System.getProperty("user.dir"));
-		      e.printStackTrace();
-		}
-	}
-	
-	private static void readEventList(String filename) {
-		eventList = new HashMap<String,Event>();
-		try {
-			File eventFile = new File(filename);
-			Scanner reader = new Scanner (eventFile);
-			String temp = "";
-			String[] ele;
-			while (reader.hasNextLine()) {
-				temp = reader.nextLine();
-				ele = temp.split("\\s+");
-				eventList.put(ele[0], new Event(ele[0], ele[1], Integer.valueOf(ele[2]), Double.valueOf(ele[3])/100));
-			}
-			reader.close();
-		} catch (FileNotFoundException e) {
-			 System.out.println("An error occurred." + System.getProperty("user.dir"));
-		     e.printStackTrace();
-		}
-	}
-	
-	
-	private static void writeAccountList(String filename) {
-		String key;
-		User temp;
-		try {
-			FileWriter writer = new FileWriter(filename,false);
-			for (Map.Entry mapElement : userList.entrySet()) { 
-	            key = (String)mapElement.getKey(); 
-	            temp = userList.get(key);
-	            writer.write(temp.toString() + "\n"); 
-	        } 
-			writer.close();
-		} catch (IOException e) {
-		      System.out.println("An error occurred." + System.getProperty("user.dir"));
-		      e.printStackTrace();
-		}
-	}
-	
-	private static void writeEventList(String filename) {
-		String key;
-		Event temp;
-		try {
-			FileWriter writer = new FileWriter(filename ,false);
-			for (Map.Entry mapElement : eventList.entrySet()) { 
-	            key = (String)mapElement.getKey(); 
-	            temp = eventList.get(key);
-	            writer.write(temp.toString() + "\n"); 
-	        } 
-			writer.close();
-		} catch (IOException e) {
-		      System.out.println("An error occurred." + System.getProperty("user.dir"));
-		      e.printStackTrace();
-		}
-	}
-
-	private static void writeTransactionList() {
-		FileWriter fw = null;
-        BufferedWriter bw = null;
-        PrintWriter pw = null;
-		try {
-            fw = new FileWriter("TransactionList.txt", true);
-            bw = new BufferedWriter(fw);
-            pw = new PrintWriter(bw);
-            Iterator<String> i = transactionList.iterator();
-            pw.println("");
-            while (i.hasNext()) {
-            	pw.println(i.next());
-            }
-            pw.flush();
-            pw.close();
-            bw.close();
-            fw.close();
-        }  catch (IOException e) {
-        	 System.out.println("An error occurred." + System.getProperty("user.dir"));
-		     e.printStackTrace();
-        }
 	}
 	
 	//transaction code helper methods

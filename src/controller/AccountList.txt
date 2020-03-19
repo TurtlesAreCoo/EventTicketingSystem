@@ -1,5 +1,6 @@
-standard        FS 000010000
-StandardSell    SS 000010000
-Admin           AA 000010000
-StandardFull    FS 000010000
-StandardBuy     BS 000010000
+standard        FS 000000100
+StandardSell    SS 000000100
+Admin           AA 000000100
+StandardFull    FS 000000100
+someuser        FS 000010000
+StandardBuy     BS 000000100
