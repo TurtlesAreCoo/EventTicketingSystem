@@ -95,13 +95,13 @@ public class Controller {
 						// check Privileges of account
 						if(currentUser.getType().equals("AA")){
 						//call delete method	
-						if(delete())
-						{
-							System.out.println("User was deleted successfully.");
+							if(delete())
+							{
+								System.out.println("User was deleted successfully.");
 							 
-						}else {
-							System.out.println("No user was deleted.");
-						}
+							}else {
+								System.out.println("No user was deleted.");
+						}	
 						}else {
 							System.out.println("Error: Admin Privileges Required.");
 						}
