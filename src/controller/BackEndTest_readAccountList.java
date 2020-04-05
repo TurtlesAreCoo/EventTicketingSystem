@@ -12,6 +12,11 @@ class BackEndTest_readAccountList {
 
 	@Test
 	void test() {	
+		/* A hashmap named result is created with the parameters seen below
+		 * then a the readAccountList method is called 
+		 * the result should not be a null
+		 * it will be the list of accounts in the account list file
+		 */
 		HashMap<String, User> result = BackEnd.readAccountList("AccountList");
 		assertNotNull("AccountList file not found", result); 
 
